@@ -8,7 +8,7 @@ const MainContent = () => {
         <Col md={8}>
           {/* PANNELLO PRINCIPALE */}
           <Row>
-            <Col className="border border-2 border-secondary mt-4 p-0 ">
+            <Col className="border border-2 border-secondary-subtle -subtle mt-4 p-0 ">
               <Card className="">
                 <Card.Img
                   variant="top"
@@ -17,9 +17,7 @@ const MainContent = () => {
                 <Card.Body>
                   <div className="d-flex">
                     <Card.Title className="me-3">Salvatore Desole</Card.Title>
-                    <Badge className="bg-transparent text-primary border border-primary ">
-                      Aggiungi badge di verifica
-                    </Badge>
+                    <Badge className="bg-transparent text-primary border border-primary ">Aggiungi badge di verifica</Badge>
                     <div className="d-flex ms-auto align-items-center justify-content-center">
                       {/* <img> */}
                       <App />
@@ -35,43 +33,33 @@ const MainContent = () => {
                   <Button className="me-3 rounded-pill" variant="primary">
                     Go somewhere
                   </Button>
-                  <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill ">
-                    Go somewhere
-                  </Button>
-                  <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill">
-                    Go somewhere
-                  </Button>
-                  <Button className="me-3 bg-transparent text-secondary border border-secondary rounded-pill">
-                    Go somewhere
-                  </Button>
+                  <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill ">Go somewhere</Button>
+                  <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill">Go somewhere</Button>
+                  <Button className="me-3 bg-transparent text-secondary border border-secondary-subtle  rounded-pill">Go somewhere</Button>
                 </Card.Body>
               </Card>
             </Col>
           </Row>
           {/* CONSIGLIATI PER TE */}
           <Row>
-            <Col className="border border-2 border-secondary mt-3">
+            <Col className="border border-2 border-secondary-subtle  mt-3">
               <h3>Consigliato per te</h3>
               <div className="d-flex align-items-center">
                 <EyeFill /> <p className="m-0">Solo per te</p>
               </div>
-              <div className="border border-secondary border-1 bg-transparent rounded-3 p-3 mb-3">
+              <div className="border border-secondary-subtle  border-1 bg-transparent rounded-3 p-3 mb-3">
                 <div className="d-flex">
                   <Image src="https://static.licdn.com/aero-v1/sc/h/db05fgvyq7n2ng4fiexgf4hcq" />
-                  <strong>
-                    Scrivi un riepilogo per mettere in evidenza la tua personalità o la tua esperienza lavorativa
-                  </strong>
+                  <strong>Scrivi un riepilogo per mettere in evidenza la tua personalità o la tua esperienza lavorativa</strong>
                 </div>
                 <p>Gli utenti che includono un riepilogo ricevono fino a 3,9 volte più visualizzazioni del profilo.</p>
-                <Button className="bg-transparent text-secondary border border-secondary rounded-pill">
-                  Aggiungi un riepilogo
-                </Button>
+                <Button className="bg-transparent text-secondary border border-secondary-subtle  rounded-pill">Aggiungi un riepilogo</Button>
               </div>
             </Col>
           </Row>
           {/* ANALISI */}
           <Row>
-            <Col className="border border-2 border-secondary mt-3">
+            <Col className="border border-2 border-secondary-subtle  mt-3">
               <h3>Analisi</h3>
               <div className="d-flex align-items-center">
                 <EyeFill /> <p className="m-0">Solo per te</p>
@@ -110,16 +98,14 @@ const MainContent = () => {
             </Col>
           </Row>
           {/* CONSIGLIATI PER TE */}
-          <Row className="border border-2 border-secondary mt-3">
+          <Row className="border border-2 border-secondary-subtle  mt-3">
             <Row>
               <Col>
                 <p>Attività</p>
                 <a href="#">26 follower</a>
               </Col>
               <Col>
-                <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill">
-                  Crea un post
-                </Button>
+                <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill">Crea un post</Button>
                 <Pencil />
               </Col>
             </Row>
@@ -138,7 +124,7 @@ const MainContent = () => {
             </Row>
           </Row>
           {/* ESPERIENZE */}
-          <Row className="border border-2 border-secondary mt-3">
+          <Row className="border border-2 border-secondary-subtle  mt-3">
             <Row>
               <Col>
                 <p>Esperienza</p>
@@ -178,7 +164,7 @@ const MainContent = () => {
             </Row>
           </Row>
           {/* FORMAZIONE */}
-          <Row className="border border-2 border-secondary mt-3">
+          <Row className="border border-2 border-secondary-subtle  mt-3">
             <Row>
               <Col>
                 <p>Formazione</p>
@@ -217,26 +203,24 @@ const MainContent = () => {
 
           {/* COMPETENZE */}
           <Row>
-            <Col className="border border-2 border-secondary mt-3 p-2 ">
-              <div className="border border-1 border-secondary p-3 rounded-3 " style={{ outline: "dashed" }}>
+            <Col className="border border-2 border-secondary-subtle  mt-3 p-2 ">
+              <div className="border border-1 border-secondary-subtle  p-3 rounded-3 " style={{ outline: "dashed" }}>
                 <div className="d-flex">
                   <h3 className="me-auto">Competenze</h3>
                   <XLg />
                 </div>
                 <p>
-                  Fai capire se hai un profilo adatto per le nuove opportunità: il 50% dei recruiter usa i dati sulle
-                  competenze per coprire le posizioni aperte
+                  Fai capire se hai un profilo adatto per le nuove opportunità: il 50% dei recruiter usa i dati sulle competenze per coprire le
+                  posizioni aperte
                 </p>
                 <h4 className="text-muted ">Soft skill</h4>
-                <h4 className="text-muted border-top border-secondary pt-2">Competenze tecniche</h4>
-                <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill ">
-                  Aggiungi competenze
-                </Button>
+                <h4 className="text-muted border-top border-secondary-subtle  pt-2">Competenze tecniche</h4>
+                <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill ">Aggiungi competenze</Button>
               </div>
             </Col>
           </Row>
           <Row>
-            <Col className="border border-2 border-secondary mt-3">
+            <Col className="border border-2 border-secondary-subtle  mt-3">
               {/* INTERESSI */}
               <p>interessi</p>
               <Tabs defaultActiveKey="Aziende" transition={false} id="noanim-tab-example" className="mb-3">
@@ -275,7 +259,7 @@ const MainContent = () => {
                     </Col>
                   </Row>
                 </Tab>
-                <Tab eventKey="Scuole o università" title="Scuole o universitàe">
+                <Tab eventKey="Scuole o università" title="Scuole o università">
                   <Row>
                     <Col>
                       <Row>
@@ -321,26 +305,26 @@ const MainContent = () => {
           </Row>
         </Col>
         {/* ----------- */}
-        <Col md={2} className="border border-2 border-secondary">
+        <Col md={2} className=" ">
           <Row>
-            <Col className="border border-2 border-secondary mt-4">
+            <Col className="border border-2 border-secondary-subtle  mt-4">
               <p>Lingua del Profilo</p>
               <p>Profilo pubblico e Url</p>
             </Col>
           </Row>
 
           <Row>
-            <Col className="border border-2 border-secondary mt-3">
+            <Col className="border border-2 border-secondary-subtle  mt-3">
               <p>Altre visualizzazioni</p>
             </Col>
           </Row>
           <Row>
-            <Col className="border border-2 border-secondary mt-3">
+            <Col className="border border-2 border-secondary-subtle   mt-3">
               <p>persone che potresti conoscere</p>
             </Col>
           </Row>
           <Row>
-            <Col className="border border-2 border-secondary mt-3">
+            <Col className="border border-2 border-secondary-subtle  mt-3">
               <p>potrebbe interessarti</p>
             </Col>
           </Row>
