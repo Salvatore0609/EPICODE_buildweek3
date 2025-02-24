@@ -180,7 +180,7 @@ const TopBar = () => {
               >
                 <path d="M3 3h4v4H3zm7 4h4V3h-4zm7-4v4h4V3zM3 14h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4zM3 21h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4z"></path>
               </svg>
-              <NavDropdown title="Per le aziende" id="navbarScrollingDropdown">
+              <NavDropdown title="Per le aziende" id="navbarScrollingDropdown" align="end">
                 <Row className="gap-4 p-4">
                   <Col md={6}>
                     <NavDropdown.Item className="" style={{ width: "600px" }}>

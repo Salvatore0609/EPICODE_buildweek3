@@ -1,8 +1,11 @@
-import { Col, Container, Row, Dropdown } from "react-bootstrap";
+import { Col, Container, Row, Dropdown, Form } from "react-bootstrap";
 import "./Footer.css";
 import { GearFill, QuestionCircleFill, ShieldShaded } from "react-bootstrap-icons";
+import { useState } from "react";
 
 const Footer = () => {
+  const [key, setKey] = useState("it_IT");
+
   return (
     <Container
       style={{
@@ -153,9 +156,11 @@ const Footer = () => {
           </p>
         </Col>
         <Col>
-          <select
+          <Form.Select
             id="globalfooter-select_language"
             className="global-footer__language-selection-dropdown  t-black--light t-bold"
+            activeKey={key}
+            onSelect={(k) => setKey(k)}
           >
             <option value="ar_AE" lang="ar-ae">
               العربية (Arabo)
@@ -199,7 +204,7 @@ const Footer = () => {
             <option value="in_ID" lang="in-id">
               Bahasa Indonesia (Indonesiano)
             </option>
-            <option value="it_IT" lang="it-it">
+            <option value="it_IT" lang="it-it" selected>
               Italiano (Italiano)
             </option>
             <option value="iw_IL" lang="iw-il">
@@ -265,7 +270,7 @@ const Footer = () => {
             <option value="zh_TW" lang="zh-tw">
               正體中文 (Cinese (Tradizionale))
             </option>
-          </select>
+          </Form.Select>
         </Col>
       </Row>
       <p className="t-12 t-black--light t-normal text-align-left clear-both">LinkedIn Corporation © 2025</p>
