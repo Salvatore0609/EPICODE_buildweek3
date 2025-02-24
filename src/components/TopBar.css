@@ -2,6 +2,11 @@ a {
   text-decoration: none;
   color: grey;
 }
+.premium-a {
+  text-decoration: underline;
+  color: #b06009;
+  font-size: 1em;
+}
 .underline:hover {
   text-decoration: underline;
 }

@@ -2,7 +2,7 @@ import { Button, Col, Container, Form, Nav, Navbar, NavDropdown, Row } from "rea
 import "../components/TopBar.css";
 const TopBar = () => {
   return (
-    <Navbar /* expand="lg"  */ className="bg-white">
+    <Navbar /* expand="lg"  */ className="bg-white  p-0" sticky="top">
       <Container fluid>
         <Navbar.Brand href="#" className="nav-brand">
           {/* <svg
@@ -232,6 +232,11 @@ const TopBar = () => {
                   </Col>
                 </Row>
               </NavDropdown>
+            </Nav.Link>
+            <Nav.Link>
+              <a href="#" className="premium-a ">
+                Prova premium per 0 EUR
+              </a>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
