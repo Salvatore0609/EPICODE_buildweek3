@@ -1,7 +1,16 @@
 import "./App.css";
+import TopBar from "./components/TopBar";
+import MainContent from "./components/MainContent";
+import Footer from "./components/Footer";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <TopBar />
+      <MainContent />
+      <Footer />
+    </>
+  );
 }
 
 export default App;
