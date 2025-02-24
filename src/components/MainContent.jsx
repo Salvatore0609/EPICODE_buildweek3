@@ -4,7 +4,7 @@ import { App, ArrowRight, BarChartLineFill, EyeFill, Pencil, PeopleFill, PlusLg,
 const MainContent = () => {
   return (
     <Container>
-      <Row className="gap-4 d-flex justify-content-center ">
+      <Row className="gap-4 d-flex justify-content-center border-0 ">
         <Col md={8}>
           {/* PANNELLO PRINCIPALE */}
           <Row>
