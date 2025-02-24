@@ -1,0 +1,13 @@
+body {
+  background-color: #f4f2ee;
+}
+
+#msg-head:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+#btn-invio-msg:hover {
+  background-color: rgb(240, 240, 240);
+  color: black;
+  /* border: 1px black solid; */
+}
