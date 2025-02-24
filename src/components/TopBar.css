@@ -1,0 +1,27 @@
+a {
+  text-decoration: none;
+  color: grey;
+}
+.underline:hover {
+  text-decoration: underline;
+}
+
+.premium-text:hover {
+  color: #0a66cb;
+}
+
+.nav-paragraphs {
+  font-size: 0.79em;
+  color: grey;
+}
+
+.Cerca {
+  background-color: #edf3f8;
+  border: none;
+}
+
+.input-zone {
+  width: 100%;
+  z-index: 0;
+  max-width: 280px;
+}
