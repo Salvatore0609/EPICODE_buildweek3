@@ -16,7 +16,15 @@ function ExperienceModal(props) {
               <p>
                 Attiva l’opzione per informare la tua rete delle principali modifiche al profilo (ad esempio un nuovo
                 lavoro) e degli anniversari lavorativi. Gli aggiornamenti possono richiedere fino a 2 ore. Scopri di più
-                sulla condivisione delle modifiche del profilo.
+                sulla{" "}
+                <a
+                  href="https://www.linkedin.com/help/linkedin/answer/a529062/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_add_position%3BF0GRgfBiTMG9MjkwifelQQ%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  condivisione delle modifiche del profilo
+                </a>
+                .
               </p>
             </div>
             <Form.Check // prettier-ignore
@@ -29,7 +37,7 @@ function ExperienceModal(props) {
           <p className="">* Indica che è obbligatorio</p>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Qualifica*</Form.Label>
-            <Form.Control size="sm" type="text" placeholder="Esempio: Retail Sales Manager" />
+            <Form.Control size="sm" type="text" placeholder="Esempio: Retail Sales Manager" required />
           </Form.Group>
           <Form.Label>Tipo di impiego</Form.Label>
           <Form.Select aria-label="Default select example" size="sm">
@@ -45,7 +53,7 @@ function ExperienceModal(props) {
           </Form.Select>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Azienda o organizzazione*</Form.Label>
-            <Form.Control size="sm" type="text" placeholder="Esempio: Microsoft" />
+            <Form.Control size="sm" type="text" placeholder="Esempio: Microsoft" required />
           </Form.Group>
           <Form.Check // prettier-ignore
             type="checkbox"
@@ -55,7 +63,7 @@ function ExperienceModal(props) {
 
           <Form.Label>Data di inizio*</Form.Label>
           <InputGroup className="mb-3">
-            <Form.Select aria-label="Default select example" size="sm" className="me-1">
+            <Form.Select aria-label="Default select example" size="sm" className="me-1" required>
               <option>Mese</option>
               <option value="1">Gennaio</option>
               <option value="2">Febbraio</option>
@@ -70,7 +78,7 @@ function ExperienceModal(props) {
               <option value="11">Novembre</option>
               <option value="12">Dicembre</option>
             </Form.Select>
-            <Form.Select aria-label="Default select example" size="sm" className="ms-1">
+            <Form.Select aria-label="Default select example" size="sm" className="ms-1" required>
               <option>Anno</option>
               <option value="1">2025</option>
               <option value="2">2024</option>
@@ -84,7 +92,7 @@ function ExperienceModal(props) {
           </InputGroup>
           <Form.Label>Data di fine*</Form.Label>
           <InputGroup className="mb-3">
-            <Form.Select aria-label="Default select example" size="sm" className="me-1">
+            <Form.Select aria-label="Default select example" size="sm" className="me-1" required>
               <option>Mese</option>
               <option value="1">Gennaio</option>
               <option value="2">Febbraio</option>
@@ -99,7 +107,7 @@ function ExperienceModal(props) {
               <option value="11">Novembre</option>
               <option value="12">Dicembre</option>
             </Form.Select>
-            <Form.Select aria-label="Default select example" size="sm" className="ms-1">
+            <Form.Select aria-label="Default select example" size="sm" className="ms-1" required>
               <option>Anno</option>
               <option value="1">2025</option>
               <option value="2">2024</option>
@@ -113,7 +121,7 @@ function ExperienceModal(props) {
           </InputGroup>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Località*</Form.Label>
-            <Form.Control size="sm" type="text" placeholder="Esempio: Milano, Italia" />
+            <Form.Control size="sm" type="text" placeholder="Esempio: Milano, Italia" required />
           </Form.Group>
           <Form.Label>Tipo di località</Form.Label>
           <Form.Select aria-label="Default select example" size="sm">
@@ -123,9 +131,63 @@ function ExperienceModal(props) {
             <option value="3">Da remoto</option>
           </Form.Select>
           <Form.Label>Scegli un tipo di località &#40;es. da remoto&#41;</Form.Label>
+          <Form.Group className="mb-3" controlId="DescriptionTextarea1">
+            <Form.Label>Descrizione</Form.Label>
+            <Form.Control as="textarea" rows={3} />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Label>Sommario del profilo</Form.Label>
+            <Form.Control size="sm" type="text" placeholder="Esempio: Retail Sales Manager" />
+            <Form.Label>Compare sotto il tuo nome nella parte superiore del profilo</Form.Label>
+          </Form.Group>
+          <Form.Label>Dove hai trovato questa offerta di lavoro?</Form.Label>
+          <Form.Select aria-label="Default select example" size="sm">
+            <option>Seleziona</option>
+            <option value="1">Linkedln</option>
+            <option value="2">Sito web dell &apos;azienda</option>
+            <option value="3">Indeed</option>
+            <option value="4">Altri sitin di offerte di lavoro</option>
+            <option value="5">Segnalazione</option>
+            <option value="6">Contattati da recruiter</option>
+            <option value="7">Agenzia di selezione del personale</option>
+            <option value="8">Altro</option>
+          </Form.Select>
+          <Form.Label>Queste informazioni verranno usate per migliorare la ricerca di lavoro su LinkedIn.</Form.Label>
+          <Form.Check // prettier-ignore
+            type="checkbox"
+            id="default-checkbox"
+            label="Mostra “ mi ha aiutato a ottenere questo lavoro” accanto a questa posizione "
+          />
+          <div>
+            <h5>Competenze</h5>
+            <p>
+              Ti consigliamo di aggiungere le 5 competenze più utilizzate in questo ruolo. Appariranno anche nella
+              sezione Competenze.
+            </p>
+            <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill ">
+              + Aggiungi competenza
+            </Button>
+            <h5>Media</h5>
+            <p>
+              Aggiungi contenuti multimediali come immagini, documenti, siti o presentazioni. Scopri di più sui{" "}
+              <a
+                href="https://www.linkedin.com/help/linkedin/answer/a1516731?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_add_position%3BF0GRgfBiTMG9MjkwifelQQ%3D%3D"
+                target="_blank"
+                className="text-primary"
+              >
+                tipi di file multimediali supportati
+              </a>
+              .
+            </p>
+            <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill ">
+              + Aggiungi media
+            </Button>
+          </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
+          <Button variant="primary rounded-pill" onClick={props.onHide}>
+            Salva
+          </Button>
         </Modal.Footer>
       </Form>
     </Modal>

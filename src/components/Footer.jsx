@@ -1,5 +1,4 @@
 import { Col, Container, Row, Dropdown, Form } from "react-bootstrap";
-import "./Footer.css";
 import { GearFill, QuestionCircleFill, ShieldShaded } from "react-bootstrap-icons";
 import { useState } from "react";
 
@@ -28,10 +27,7 @@ const Footer = () => {
           </p>
           <p className="global-footer__link-container grid__col  ">
             <Dropdown>
-              <Dropdown.Toggle
-                variant="link"
-                className="global-footer__link global-footer__link--static t-12 t-bold p-0"
-              >
+              <Dropdown.Toggle variant="link" className="global-footer__link global-footer__link--static t-12 t-bold p-0">
                 Privacy e condizioni
               </Dropdown.Toggle>
               <Dropdown.Menu>
