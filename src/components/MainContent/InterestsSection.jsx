@@ -5,7 +5,7 @@ const InterestSection = () => {
   return (
     <>
       <Row>
-        <Col className="border border-2 border-secondary-subtle  mt-3">
+        <Col className="border rounded-2 bg-white  mt-3">
           <p>interessi</p>
           <Tabs defaultActiveKey="Aziende" transition={false} id="noanim-tab-example" className="mb-3">
             <Tab eventKey="Aziende" title="Aziende">

@@ -33,7 +33,7 @@ const ProfileSection = () => {
   return (
     <>
       <Row>
-        <Col className="border border-2 border-secondary-subtle mt-4 p-0">
+        <Col className="bg-white mt-4 p-0">
           <Card>
             <Card.Img
               className="background-image"
@@ -69,25 +69,25 @@ const ProfileSection = () => {
               </Button>
               <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill">Aggiungi esperienze</Button>
               <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill">Visualizza attività</Button>
-              <Button className="me-3 bg-transparent text-secondary border border-secondary-subtle rounded-pill">Altro</Button>
+              <Button className="me-3 bg-transparent text-secondary border  border-secondary bg-white rounded-pill">Altro</Button>
             </Card.Body>
           </Card>
         </Col>
       </Row>
 
       <Row>
-        <Col className="border border-2 border-secondary-subtle mt-3">
+        <Col className="border rounded-2 bg-white mt-3">
           <h3>Consigliato per te</h3>
           <div className="d-flex align-items-center">
             <EyeFill /> <p className="m-0">Solo per te</p>
           </div>
-          <div className="border border-secondary-subtle border-1 bg-transparent rounded-3 p-3 mb-3">
+          <div className="border  border-secondary bg-white border-1 bg-transparent rounded-3 p-3 mb-3">
             <div className="d-flex">
               <Image src="https://static.licdn.com/aero-v1/sc/h/db05fgvyq7n2ng4fiexgf4hcq" />
               <strong>Scrivi un riepilogo per mettere in evidenza la tua personalità o la tua esperienza lavorativa</strong>
             </div>
             <p>Gli utenti che includono un riepilogo ricevono fino a 3,9 volte più visualizzazioni del profilo.</p>
-            <Button className="bg-transparent text-secondary border border-secondary-subtle rounded-pill">Aggiungi un riepilogo</Button>
+            <Button className="bg-transparent text-secondary border  border-secondary bg-white rounded-pill">Aggiungi un riepilogo</Button>
           </div>
         </Col>
       </Row>

@@ -1,15 +1,5 @@
 import { Button, Col, Container, Form, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
-import {
-  BarChart,
-  Bullseye,
-  CardChecklist,
-  CompassFill,
-  Grid3x3Gap,
-  PeopleFill,
-  PersonCheckFill,
-  PlayBtnFill,
-  Plus,
-} from "react-bootstrap-icons";
+import { BarChart, Bullseye, CardChecklist, CompassFill, Grid3x3Gap, PeopleFill, PersonCheckFill, PlayBtnFill, Plus } from "react-bootstrap-icons";
 
 const TopBar = () => {
   return (
@@ -17,12 +7,7 @@ const TopBar = () => {
       <Navbar className="bg-white  p-0 " sticky="top">
         <Container fluid>
           <Navbar.Brand href="#" className="nav-brand">
-            <img
-              src="https://brandlogos.net/wp-content/uploads/2016/06/linkedin-logo.png"
-              alt="logo"
-              width="60"
-              height="60"
-            />
+            <img src="https://brandlogos.net/wp-content/uploads/2016/06/linkedin-logo.png" alt="logo" width="60" height="60" />
           </Navbar.Brand>
           <Form className="d-flex input-zone">
             <Form.Control type="search" placeholder="Cerca" className="me-2 Cerca" aria-label="Search" />

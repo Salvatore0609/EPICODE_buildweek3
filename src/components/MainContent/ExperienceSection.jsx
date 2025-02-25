@@ -8,7 +8,7 @@ const ExperienceSection = () => {
   return (
     <>
       <Row>
-        <Col className="border border-2 border-secondary-subtle  mt-3 p-2 ">
+        <Col className="border bg-white rounded-2  mt-3 p-2 ">
           <div className="border border-1 border-secondary-subtle  p-3 rounded-3 " style={{ outline: "dashed" }}>
             <div className="d-flex">
               <h3 className="me-auto">Esperienze</h3>
@@ -32,12 +32,12 @@ const ExperienceSection = () => {
           </div>
         </Col>
       </Row>
-      <Row className="border border-2 border-secondary-subtle  mt-3">
+      <Row className="border bg-white rounded-2  mt-3">
         <Row>
           <Col>
             <p>Esperienza</p>
           </Col>
-          <Col>
+          <Col className="d-flex justify-content-end">
             <PlusLg />
             <Pencil />
           </Col>
