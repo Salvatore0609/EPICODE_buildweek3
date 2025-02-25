@@ -1,30 +1,62 @@
+import { useEffect, useState } from "react";
 import { Badge, Button, Card, Col, Image, Row } from "react-bootstrap";
-import { App, EyeFill } from "react-bootstrap-icons";
+import { App, EyeFill, Pencil } from "react-bootstrap-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { setProfile } from "../../redux/reducers/profileSlice";
+import { fetchProfile } from "../../redux/action/profileAction";
+import EditProfileModal from "./EditProfilModa";
 
 const ProfileSection = () => {
+  const dispatch = useDispatch();
+  const profile = useSelector((state) => state.profile);
+
+  const [showEditModal, setShowEditModal] = useState(false);
+
+  const handleShowEditModal = () => setShowEditModal(true);
+  const handleCloseEditModal = () => setShowEditModal(false);
+
+  useEffect(() => {
+    const getProfile = async () => {
+      const profileData = await fetchProfile();
+      dispatch(setProfile(profileData));
+    };
+    getProfile();
+  }, [dispatch]);
+
+  if (!profile) return <div>Loading...</div>;
   return (
     <>
       <Row>
         <Col className="border border-2 border-secondary-subtle -subtle mt-4 p-0 ">
           <Card className="">
             <Card.Img
+              className="background-image"
               variant="top"
               src="https://media.licdn.com/dms/image/v2/C5616AQFyq0OEeeELiA/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1618202768321?e=1746057600&v=beta&t=orOlXEWuHIHD_jLQQq9usupmfqP6369kcOvCVO0HRyo"
             />
-            <Card.Body>
-              <div className="d-flex">
-                <Card.Title className="me-3">Salvatore Desole</Card.Title>
+            <div className="profile-image-container">
+              <img src={profile.image} alt="Profilo" className="profile-image" />
+            </div>
+            <Button variant="transparent" onClick={handleShowEditModal} className="d-flex justify-content-end mt-2">
+              <Pencil />
+            </Button>
+            <EditProfileModal show={showEditModal} handleClose={handleCloseEditModal} profile={profile} />
+
+            <Card.Body className="mt-3">
+              <div className="d-flex mt-3">
+                <Card.Title className="me-3">
+                  {profile.name} {profile.surname}
+                </Card.Title>
                 <Badge className="bg-transparent text-primary border border-primary ">Aggiungi badge di verifica</Badge>
                 <div className="d-flex ms-auto align-items-center justify-content-center">
-                  {/* <img> */}
                   <App />
-                  {/*   </img> */}
-                  <p className="m-0">Liceo Artistico</p>
+
+                  <p className="m-0">{profile.title}</p>
                 </div>
               </div>
               <Card.Text>
-                <p>Sommario</p>
-                <p>Regione, Stato - (informazione di contatto)</p>
+                <p>{profile.bio}</p>
+                <p>{profile.area}</p>
                 <p>collegamenti(amicizie)</p>
               </Card.Text>
               <Button className="me-3 rounded-pill" variant="primary">
