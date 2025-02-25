@@ -1,21 +1,22 @@
 import { Button, Col, Container, Form, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
 import "../components/TopBar.css";
+import {
+  BarChart,
+  Bullseye,
+  CardChecklist,
+  CompassFill,
+  Grid3x3Gap,
+  PeopleFill,
+  PersonCheckFill,
+  PlayBtnFill,
+  Plus,
+} from "react-bootstrap-icons";
+
 const TopBar = () => {
   return (
     <Navbar /* expand="lg"  */ className="bg-white  p-0" sticky="top">
       <Container fluid>
         <Navbar.Brand href="#" className="nav-brand">
-          {/* <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            data-supported-dps="24x24"
-            className="mercado-match"
-            width="45"
-            height="45"
-            focusable="false"
-          >
-            <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
-          </svg> */}
           <img
             src="https://brandlogos.net/wp-content/uploads/2016/06/linkedin-logo.png"
             alt="logo"
@@ -29,7 +30,7 @@ const TopBar = () => {
 
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
+          <Nav className="me-auto my-2 my-lg-0">
             <Nav.Link href="#action1" className="d-flex flex-column mx-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -115,119 +116,175 @@ const TopBar = () => {
                 Notifiche
               </a>
             </Nav.Link>
-            <NavDropdown title="Tu" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#">
-                <Button variant="outline-primary">Visualizza profilo</Button>
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                <Button variant="primary">Verifica</Button>
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#">
-                <h6>Account</h6>
-                <p>
-                  <a href="#" className="text-secondary fw-medium premium-text ">
-                    Prova 1 mese di Premium per 0 EUR
-                  </a>
-                </p>
-                <p>
-                  <a href="#" className="underline">
-                    Impostazioni e privacy
-                  </a>
-                </p>
-                <p>
-                  <a href="#" className="underline">
-                    Guida
-                  </a>
-                </p>
-                <p>
-                  <a href="#" className="underline">
-                    Lingua
-                  </a>
-                </p>
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#">
-                <h6>Gestisci</h6>
-
-                <p>
-                  <a href="#" className="underline">
-                    Post e attività
-                  </a>
-                </p>
-                <p>
-                  <a href="#" className="underline">
-                    Account per la pubblicazione di...
-                  </a>
-                </p>
-                <p>
-                  <a href="#" className="underline">
-                    Esci
-                  </a>
-                </p>
-              </NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link href="#" className="d-flex flex-column mx-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                data-supported-dps="24x24"
-                fill="currentColor"
-                className="mercado-match"
+            <Nav.Link>
+              <img
+                alt="profile pic"
                 width="24"
                 height="24"
-                focusable="false"
-              >
-                <path d="M3 3h4v4H3zm7 4h4V3h-4zm7-4v4h4V3zM3 14h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4zM3 21h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4z"></path>
-              </svg>
-              <NavDropdown title="Per le aziende" id="navbarScrollingDropdown" align="end">
-                <Row className="gap-4 p-4">
-                  <Col md={6}>
-                    <NavDropdown.Item className="" style={{ width: "600px" }}>
-                      <h5>Le mie app</h5>
-                      <p className="fw-medium">Trova Lead</p>
-                      <p className="fw-medium">Gruppi</p>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item style={{ width: "600px" }}>
-                      <p className="text-secondary fw-medium">Talent</p>
-                      <p>Talent Insight</p>
-                      <p>Pubblica un&apos;offerta di lavoro</p>
-                    </NavDropdown.Item>
+                className="rounded-circle "
+                src="https://plus.unsplash.com/premium_photo-1661333468805-e44347dbbf58?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNvbXB1dGVyJTIwYW5nZXJ8ZW58MHx8MHx8fDA%3D"
+              />
+              <NavDropdown title="Tu" id="navbarScrollingDropdown">
+                <Row className="you-section">
+                  <Col>
                     <NavDropdown.Item>
-                      <p className="text-secondary fw-medium">Vendite</p>
-                      <p>Marketplace dei servizi</p>
+                      <img
+                        alt="profile pic"
+                        width="55"
+                        height="55"
+                        className="rounded-circle "
+                        src="https://plus.unsplash.com/premium_photo-1661333468805-e44347dbbf58?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNvbXB1dGVyJTIwYW5nZXJ8ZW58MHx8MHx8fDA%3D"
+                      />
+                      <span className="fw-bold ms-2 ">Salvatore Desole</span>
                     </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <p className="text-secondary fw-medium">Marketing</p>
-                      <p>Publicizza</p>
+                    <NavDropdown.Item href="#">
+                      <Button variant="outline-primary rounded-5 px-3 pb-3 ">Visualizza profilo</Button>
+                      <Button variant="primary" className="ms-3 rounded-5 px-4 pb-3">
+                        Verifica
+                      </Button>
                     </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <p className="text-secondary fw-medium">Learning</p>
-                      <p>Learning</p>
+
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item href="#">
+                      <h6>Account</h6>
+                      <p>
+                        <a href="#" className="text-secondary fw-medium premium-text ">
+                          Prova 1 mese di Premium per 0 EUR
+                        </a>
+                      </p>
+                      <p>
+                        <a href="#" className="underline">
+                          Impostazioni e privacy
+                        </a>
+                      </p>
+                      <p>
+                        <a href="#" className="underline">
+                          Guida
+                        </a>
+                      </p>
+                      <p>
+                        <a href="#" className="underline">
+                          Lingua
+                        </a>
+                      </p>
                     </NavDropdown.Item>
                   </Col>
-                  <Col md={6}>
-                    <NavDropdown.Item>
+
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#">
+                    <h6>Gestisci</h6>
+
+                    <p>
+                      <a href="#" className="underline">
+                        Post e attività
+                      </a>
+                    </p>
+                    <p>
+                      <a href="#" className="underline">
+                        Account per la pubblicazione di...
+                      </a>
+                    </p>
+                    <p>
+                      <a href="#" className="underline">
+                        Esci
+                      </a>
+                    </p>
+                  </NavDropdown.Item>
+                </Row>
+              </NavDropdown>
+            </Nav.Link>
+            <Nav.Link href="#" className="d-flex flex-column mx-3 ">
+              <Grid3x3Gap className="fs-5 " />
+              <NavDropdown title="Per le aziende" id="navbarScrollingDropdown" align="end">
+                <Row className="gap-4 d-flex large-nav ">
+                  <Col md={5} className="ms-4 ">
+                    <NavDropdown.Item
+                      style={{
+                        width: "650px",
+                      }}
+                    >
                       <h5>Le mie app</h5>
-                      <p className="fw-medium">Trova Lead</p>
-                      <p className="fw-medium">Gruppi</p>
                     </NavDropdown.Item>
                     <NavDropdown.Item>
+                      <p className="fw-medium  menu-items">
+                        <CompassFill className="fs-4 me-3" />
+                        Trova Lead
+                      </p>
+                      <p className="fw-medium menu-items ">
+                        <PeopleFill className="fs-4 me-3" />
+                        Gruppi
+                      </p>
+                    </NavDropdown.Item>
+
+                    <NavDropdown.Item>
+                      {/* style={{ width: "600px" }} */}
                       <p className="text-secondary fw-medium">Talent</p>
-                      <p>Talent Insight</p>
-                      <p>Pubblica un&apos;offerta di lavoro</p>
+                      <p className="menu-items">
+                        <BarChart className="fs-4 me-3" />
+                        Talent Insight
+                      </p>
+                      <p className="menu-items">
+                        <CardChecklist className="fs-4 me-3" />
+                        Pubblica un&apos;offerta di lavoro
+                      </p>
                     </NavDropdown.Item>
                     <NavDropdown.Item>
                       <p className="text-secondary fw-medium">Vendite</p>
-                      <p>Marketplace dei servizi</p>
+                      <p className="menu-items">
+                        {" "}
+                        <PersonCheckFill className="fs-4 me-3" />
+                        Marketplace dei servizi
+                      </p>
                     </NavDropdown.Item>
                     <NavDropdown.Item>
                       <p className="text-secondary fw-medium">Marketing</p>
-                      <p>Publicizza</p>
+                      <p className="menu-items">
+                        {" "}
+                        <Bullseye className="fs-4 me-3" />
+                        Publicizza
+                      </p>
                     </NavDropdown.Item>
                     <NavDropdown.Item>
                       <p className="text-secondary fw-medium">Learning</p>
-                      <p>Learning</p>
+                      <p className="menu-items">
+                        <PlayBtnFill className="fs-4 me-3" />
+                        Learning
+                      </p>
+                    </NavDropdown.Item>
+                  </Col>
+                  <Col md={5} className="border-start ps-4">
+                    <NavDropdown.Item>
+                      <h5>Scopri altro per il business</h5>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item className="menu-items">
+                      <p className="fw-medium menu-item">Assumi su LinkedIn </p>
+                      <p className=" menu-subtext">Trova, attrai e assumi</p>
+                    </NavDropdown.Item>
+
+                    <NavDropdown.Item className="menu-items">
+                      <p className="fw-medium menu-item">Vendi su LinkedIn</p>
+                      <p className="menu-subtext">Sblocca nuove oppurtunità di vendita</p>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item className="menu-items">
+                      <p className="fw-medium menu-item">Offerta di lavoro gratuita</p>
+                      <p className="menu-subtext">Ottieni rapidamente candidati qualificati</p>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item className="menu-items">
+                      <p className="fw-medium menu-item">Fai pubblicità su LinkedIn</p>
+                      <p className="menu-subtext">Acquisisci clienti e fai crescere la tua azienda</p>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item className="menu-items">
+                      <p className="fw-medium menu-item">Inizia con premium</p>
+                      <p className="menu-subtext">Amplia e sfrutta la tua rete</p>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item className="menu-items">
+                      <p className="fw-medium menu-item">Impara con LinkedIn</p>
+                      <p className="menu-subtext">Gestisci i dettagli di fatturazione e account</p>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item className="menu-items">
+                      <p className="fw-medium menu-item ">
+                        Crea una pagina aziendale <Plus className="fs-4 " />
+                      </p>
                     </NavDropdown.Item>
                   </Col>
                 </Row>
