@@ -5,7 +5,7 @@ const SkillSection = () => {
   return (
     <>
       <Row>
-        <Col className="border border-2 border-secondary-subtle  mt-3 p-2 ">
+        <Col className="border rounded-2 bg-white  mt-3 p-2 ">
           <div className="border border-1 border-secondary-subtle  p-3 rounded-3 " style={{ outline: "dashed" }}>
             <div className="d-flex">
               <h3 className="me-auto">Competenze</h3>

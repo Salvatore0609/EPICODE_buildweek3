@@ -4,12 +4,12 @@ import { Pencil, PlusLg } from "react-bootstrap-icons";
 const EducationSection = () => {
   return (
     <>
-      <Row className="border border-2 border-secondary-subtle  mt-3">
+      <Row className="border rounded-2 bg-white  mt-3">
         <Row>
           <Col>
             <p>Formazione</p>
           </Col>
-          <Col>
+          <Col className="d-flex justify-content-end">
             <PlusLg />
             <Pencil />
           </Col>

@@ -5,7 +5,7 @@ const ActivitySection = () => {
   return (
     <>
       <Row>
-        <Col className="border border-2 border-secondary-subtle  mt-3">
+        <Col className="border bg-white rounded-2 mt-3">
           <h3>Analisi</h3>
           <div className="d-flex align-items-center">
             <EyeFill /> <p className="m-0">Solo per te</p>
@@ -44,7 +44,7 @@ const ActivitySection = () => {
         </Col>
       </Row>
       {/* CONSIGLIATI PER TE */}
-      <Row className="border border-2 border-secondary-subtle  mt-3">
+      <Row className="border bg-white rounded-2  mt-3">
         <Row>
           <Col>
             <p>Attività</p>

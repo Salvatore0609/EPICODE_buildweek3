@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
 import { Badge, Button, Card, Col, Image, Row } from "react-bootstrap";
-import { App, EyeFill, Pencil } from "react-bootstrap-icons";
+import { App, EyeFill, Pencil, PencilFill } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { setProfile } from "../../redux/reducers/profileSlice";
 import { fetchProfile, updateProfile } from "../../redux/action/profileAction";
 import EditProfileModal from "./EditProfilModal";
+import ProfileBgModal from "./ProfileBgModal";
+import ProfilePicModal from "../ProfilePicModal";
 
 const ProfileSection = () => {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.profile);
 
   const [showEditModal, setShowEditModal] = useState(false);
+  const [showProfileBgModal, setShowProfileBgModal] = useState(false);
+  const [showProfilePicModal, setShowProfilePicModal] = useState(false);
 
   const handleShowEditModal = () => setShowEditModal(true);
   const handleCloseEditModal = () => setShowEditModal(false);
@@ -33,16 +37,28 @@ const ProfileSection = () => {
   return (
     <>
       <Row>
-        <Col className="border border-2 border-secondary-subtle mt-4 p-0">
+        <Col className="border rounded-2 bg-white  mt-4 p-0">
           <Card>
-            <Card.Img
-              className="background-image"
-              variant="top"
-              src="https://media.licdn.com/dms/image/v2/C5616AQFyq0OEeeELiA/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1618202768321?e=1746057600&v=beta&t=orOlXEWuHIHD_jLQQq9usupmfqP6369kcOvCVO0HRyo"
-            />
-            <div className="profile-image-container">
-              <img src={profile.image} alt="Profilo" className="profile-image" />
+            <div className="position-relative">
+              <div className="position-absolute top-0 end-0">
+                <Button variant="small" onClick={() => setShowProfileBgModal(true)}>
+                  <PencilFill />
+                </Button>
+                <ProfileBgModal show={showProfileBgModal} onHide={() => setShowProfileBgModal(false)} />
+              </div>
+              <Card.Img
+                className="background-image rounded-0"
+                variant="top"
+                src="https://media.licdn.com/dms/image/v2/C5616AQFyq0OEeeELiA/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1618202768321?e=1746057600&v=beta&t=orOlXEWuHIHD_jLQQq9usupmfqP6369kcOvCVO0HRyo"
+              />
             </div>
+
+            <div className="profile-image-container">
+              <Button variant="transparent" onClick={() => setShowProfilePicModal(true)}>
+                <img src={profile.image} alt="Profilo" className="profile-image" />
+              </Button>
+            </div>
+            <ProfilePicModal show={showProfilePicModal} onHide={() => setShowProfilePicModal(false)} />
             <Button variant="transparent" onClick={handleShowEditModal} className="d-flex justify-content-end mt-2">
               <Pencil />
             </Button>
@@ -76,7 +92,7 @@ const ProfileSection = () => {
       </Row>
 
       <Row>
-        <Col className="border border-2 border-secondary-subtle mt-3">
+        <Col className="border rounded-2 bg-white  mt-3">
           <h3>Consigliato per te</h3>
           <div className="d-flex align-items-center">
             <EyeFill /> <p className="m-0">Solo per te</p>
