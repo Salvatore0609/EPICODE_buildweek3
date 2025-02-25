@@ -31,7 +31,9 @@ export const updateProfile = async (profileData) => {
       throw new Error("Errore durante l'aggiornamento del profilo");
     }
 
-    return response.json();
+    const updatedProfile = await response.json();
+    console.log("Dati ricevuti dal server:", updatedProfile);
+    return updatedProfile;
   } catch (error) {
     console.error("Errore durante l'aggiornamento del profilo:", error);
     throw error;

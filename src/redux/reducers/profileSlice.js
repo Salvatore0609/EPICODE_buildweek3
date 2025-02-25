@@ -1,8 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  name: "",
+  surname: "",
+  bio: "",
+  title: "",
+  industry: "",
+  education: "",
+  area: "",
+  contactInfo: "",
+  website: "",
+};
+
 const profileSlice = createSlice({
   name: "profile",
-  initialState: null,
+  initialState,
   reducers: {
     setProfile: (state, action) => {
       return action.payload;

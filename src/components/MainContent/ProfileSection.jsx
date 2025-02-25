@@ -3,7 +3,7 @@ import { Badge, Button, Card, Col, Image, Row } from "react-bootstrap";
 import { App, EyeFill, Pencil } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { setProfile } from "../../redux/reducers/profileSlice";
-import { fetchProfile } from "../../redux/action/profileAction";
+import { fetchProfile, updateProfile } from "../../redux/action/profileAction";
 import EditProfileModal from "./EditProfilModal";
 
 const ProfileSection = () => {
@@ -23,12 +23,18 @@ const ProfileSection = () => {
     getProfile();
   }, [dispatch]);
 
+  const handleProfileUpdate = async (updatedProfile) => {
+    await updateProfile(updatedProfile);
+    dispatch(setProfile(updatedProfile));
+    handleCloseEditModal();
+  };
+
   if (!profile) return <div>Loading...</div>;
   return (
     <>
       <Row>
-        <Col className="border border-2 border-secondary-subtle -subtle mt-4 p-0 ">
-          <Card className="">
+        <Col className="border border-2 border-secondary-subtle mt-4 p-0">
+          <Card>
             <Card.Img
               className="background-image"
               variant="top"
@@ -40,49 +46,48 @@ const ProfileSection = () => {
             <Button variant="transparent" onClick={handleShowEditModal} className="d-flex justify-content-end mt-2">
               <Pencil />
             </Button>
-            <EditProfileModal show={showEditModal} handleClose={handleCloseEditModal} profile={profile} />
+            <EditProfileModal show={showEditModal} handleClose={handleCloseEditModal} profile={profile} onSave={handleProfileUpdate} />
 
             <Card.Body className="mt-3">
               <div className="d-flex mt-3">
                 <Card.Title className="me-3">
                   {profile.name} {profile.surname}
                 </Card.Title>
-                <Badge className="bg-transparent text-primary border border-primary ">Aggiungi badge di verifica</Badge>
+                <Badge className="bg-transparent text-primary border border-primary">Aggiungi badge di verifica</Badge>
                 <div className="d-flex ms-auto align-items-center justify-content-center">
                   <App />
-
                   <p className="m-0">{profile.title}</p>
                 </div>
               </div>
               <Card.Text>
                 <p>{profile.bio}</p>
                 <p>{profile.area}</p>
-                <p>collegamenti(amicizie)</p>
+                <p>Collegamenti (amicizie)</p>
               </Card.Text>
               <Button className="me-3 rounded-pill" variant="primary">
-                Go somewhere
+                Modifica profilo
               </Button>
-              <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill ">Go somewhere</Button>
-              <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill">Go somewhere</Button>
-              <Button className="me-3 bg-transparent text-secondary border border-secondary-subtle  rounded-pill">Go somewhere</Button>
+              <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill">Aggiungi esperienze</Button>
+              <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill">Visualizza attività</Button>
+              <Button className="me-3 bg-transparent text-secondary border border-secondary-subtle rounded-pill">Altro</Button>
             </Card.Body>
           </Card>
         </Col>
       </Row>
 
       <Row>
-        <Col className="border border-2 border-secondary-subtle  mt-3">
+        <Col className="border border-2 border-secondary-subtle mt-3">
           <h3>Consigliato per te</h3>
           <div className="d-flex align-items-center">
             <EyeFill /> <p className="m-0">Solo per te</p>
           </div>
-          <div className="border border-secondary-subtle  border-1 bg-transparent rounded-3 p-3 mb-3">
+          <div className="border border-secondary-subtle border-1 bg-transparent rounded-3 p-3 mb-3">
             <div className="d-flex">
               <Image src="https://static.licdn.com/aero-v1/sc/h/db05fgvyq7n2ng4fiexgf4hcq" />
               <strong>Scrivi un riepilogo per mettere in evidenza la tua personalità o la tua esperienza lavorativa</strong>
             </div>
             <p>Gli utenti che includono un riepilogo ricevono fino a 3,9 volte più visualizzazioni del profilo.</p>
-            <Button className="bg-transparent text-secondary border border-secondary-subtle  rounded-pill">Aggiungi un riepilogo</Button>
+            <Button className="bg-transparent text-secondary border border-secondary-subtle rounded-pill">Aggiungi un riepilogo</Button>
           </div>
         </Col>
       </Row>
