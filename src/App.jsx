@@ -1,6 +1,6 @@
 import "./App.css";
 import TopBar from "./components/TopBar";
-import MainContent from "./components/MainContent";
+import MainContent from "./components/MainContent/MainContent";
 import Footer from "./components/Footer";
 import MessageBar from "./components/MessageBar";
 

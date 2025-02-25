@@ -78,13 +78,13 @@ const InterestSection = () => {
                   </Row>
                 </Col>
               </Row>
-              <Row className="text-center">
-                <a href="#">
-                  Mostra tutte le Aziende <ArrowRight />
-                </a>
-              </Row>
             </Tab>
           </Tabs>
+          <Row className="text-center">
+            <a href="#">
+              Mostra tutte le Aziende <ArrowRight />
+            </a>
+          </Row>
         </Col>
       </Row>
     </>
