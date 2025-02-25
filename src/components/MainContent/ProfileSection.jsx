@@ -4,7 +4,7 @@ import { App, EyeFill, Pencil } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { setProfile } from "../../redux/reducers/profileSlice";
 import { fetchProfile } from "../../redux/action/profileAction";
-import EditProfileModal from "./EditProfilModa";
+import EditProfileModal from "./EditProfilModal";
 
 const ProfileSection = () => {
   const dispatch = useDispatch();

@@ -1,3 +1,4 @@
+/* GET */
 const API_URL = "https:striveschool-api.herokuapp.com/api/profile/";
 const BEARER_TOKEN =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2JjNTc1ZGU3MDMzNzAwMTUzMTZkYmEiLCJpYXQiOjE3NDAzOTYzODIsImV4cCI6MTc0MTYwNTk4Mn0.ONZKTuW8uMZfm7TTZUQUDzRq8jfZZmWwJ4vefV07-jY";
@@ -14,6 +15,7 @@ export const fetchProfile = async (userId = "me") => {
   return response.json();
 };
 
+/* PUT */
 export const updateProfile = async (profileData) => {
   try {
     const response = await fetch(API_URL, {
