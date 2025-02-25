@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
 import { Badge, Button, Card, Col, Image, Row } from "react-bootstrap";
-import { App, EyeFill, Pencil } from "react-bootstrap-icons";
+import { App, EyeFill, Pencil, PencilFill } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { setProfile } from "../../redux/reducers/profileSlice";
 import { fetchProfile, updateProfile } from "../../redux/action/profileAction";
 import EditProfileModal from "./EditProfilModal";
+import ProfileBgModal from "./ProfileBgModal";
+import ProfilePicModal from "../ProfilePicModal";
 
 const ProfileSection = () => {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.profile);
 
   const [showEditModal, setShowEditModal] = useState(false);
+  const [showProfileBgModal, setShowProfileBgModal] = useState(false);
+  const [showProfilePicModal, setShowProfilePicModal] = useState(false);
 
   const handleShowEditModal = () => setShowEditModal(true);
   const handleCloseEditModal = () => setShowEditModal(false);
@@ -33,16 +37,28 @@ const ProfileSection = () => {
   return (
     <>
       <Row>
-        <Col className="bg-white mt-4 p-0">
+        <Col className="border rounded-2 bg-white  mt-4 p-0">
           <Card>
-            <Card.Img
-              className="background-image"
-              variant="top"
-              src="https://media.licdn.com/dms/image/v2/C5616AQFyq0OEeeELiA/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1618202768321?e=1746057600&v=beta&t=orOlXEWuHIHD_jLQQq9usupmfqP6369kcOvCVO0HRyo"
-            />
-            <div className="profile-image-container">
-              <img src={profile.image} alt="Profilo" className="profile-image" />
+            <div className="position-relative">
+              <div className="position-absolute top-0 end-0">
+                <Button variant="small" onClick={() => setShowProfileBgModal(true)}>
+                  <PencilFill />
+                </Button>
+                <ProfileBgModal show={showProfileBgModal} onHide={() => setShowProfileBgModal(false)} />
+              </div>
+              <Card.Img
+                className="background-image rounded-0"
+                variant="top"
+                src="https://media.licdn.com/dms/image/v2/C5616AQFyq0OEeeELiA/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1618202768321?e=1746057600&v=beta&t=orOlXEWuHIHD_jLQQq9usupmfqP6369kcOvCVO0HRyo"
+              />
             </div>
+
+            <div className="profile-image-container">
+              <Button variant="transparent" onClick={() => setShowProfilePicModal(true)}>
+                <img src={profile.image} alt="Profilo" className="profile-image" />
+              </Button>
+            </div>
+            <ProfilePicModal show={showProfilePicModal} onHide={() => setShowProfilePicModal(false)} />
             <Button variant="transparent" onClick={handleShowEditModal} className="d-flex justify-content-end mt-2">
               <Pencil />
             </Button>
@@ -69,25 +85,25 @@ const ProfileSection = () => {
               </Button>
               <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill">Aggiungi esperienze</Button>
               <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill">Visualizza attività</Button>
-              <Button className="me-3 bg-transparent text-secondary border  border-secondary bg-white rounded-pill">Altro</Button>
+              <Button className="me-3 bg-transparent text-secondary border border-secondary-subtle rounded-pill">Altro</Button>
             </Card.Body>
           </Card>
         </Col>
       </Row>
 
       <Row>
-        <Col className="border rounded-2 bg-white mt-3">
+        <Col className="border rounded-2 bg-white  mt-3">
           <h3>Consigliato per te</h3>
           <div className="d-flex align-items-center">
             <EyeFill /> <p className="m-0">Solo per te</p>
           </div>
-          <div className="border  border-secondary bg-white border-1 bg-transparent rounded-3 p-3 mb-3">
+          <div className="border border-secondary-subtle border-1 bg-transparent rounded-3 p-3 mb-3">
             <div className="d-flex">
               <Image src="https://static.licdn.com/aero-v1/sc/h/db05fgvyq7n2ng4fiexgf4hcq" />
               <strong>Scrivi un riepilogo per mettere in evidenza la tua personalità o la tua esperienza lavorativa</strong>
             </div>
             <p>Gli utenti che includono un riepilogo ricevono fino a 3,9 volte più visualizzazioni del profilo.</p>
-            <Button className="bg-transparent text-secondary border  border-secondary bg-white rounded-pill">Aggiungi un riepilogo</Button>
+            <Button className="bg-transparent text-secondary border border-secondary-subtle rounded-pill">Aggiungi un riepilogo</Button>
           </div>
         </Col>
       </Row>
