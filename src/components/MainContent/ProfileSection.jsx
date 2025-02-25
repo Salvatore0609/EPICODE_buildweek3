@@ -1,5 +1,5 @@
 import { Badge, Button, Card, Col, Image, Row } from "react-bootstrap";
-import { App, ArrowRight, BarChartLineFill, EyeFill, Pencil, PeopleFill } from "react-bootstrap-icons";
+import { App, EyeFill } from "react-bootstrap-icons";
 
 const ProfileSection = () => {
   return (
