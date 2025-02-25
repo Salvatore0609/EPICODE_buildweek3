@@ -38,6 +38,10 @@ body {
 }
 
 /* TOPBAR */
+
+.MyNav {
+  height: 60px;
+}
 a {
   text-decoration: none;
   color: grey;

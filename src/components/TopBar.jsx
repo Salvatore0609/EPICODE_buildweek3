@@ -4,7 +4,7 @@ import { BarChart, Bullseye, CardChecklist, CompassFill, Grid3x3Gap, PeopleFill,
 const TopBar = () => {
   return (
     <>
-      <Navbar className="bg-white  p-0 " sticky="top">
+      <Navbar className="bg-white MyNav " sticky="top">
         <Container fluid>
           <Navbar.Brand href="#" className="nav-brand">
             <img src="https://brandlogos.net/wp-content/uploads/2016/06/linkedin-logo.png" alt="logo" width="60" height="60" />
@@ -179,7 +179,7 @@ const TopBar = () => {
                   </Row>
                 </NavDropdown>
               </Nav.Link>
-              <Nav.Link href="#" className="d-flex flex-column  ">
+              <Nav.Link href="#" className="d-flex flex-column border-start ps-4 ">
                 <Grid3x3Gap className="fs-5 " />
                 <NavDropdown title="Per le aziende" id="navbarScrollingDropdown" align="end">
                   <Row className="gap-4 d-flex large-nav ">
