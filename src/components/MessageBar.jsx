@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Button, Col, Collapse, Container, Image, Row, Form, InputGroup } from "react-bootstrap";
 import { ChevronCompactDown, ChevronCompactUp, PencilSquare, Search, Sliders, ThreeDots } from "react-bootstrap-icons";
+import { useSelector } from "react-redux";
 
 const MessageBar = () => {
+  const profile = useSelector((state) => state.profile);
   const [open, setOpen] = useState(false);
   return (
     <Container fluid className="fixed-bottom">
@@ -13,13 +15,7 @@ const MessageBar = () => {
         >
           <div className="d-flex align-items-center py-2  justify-content-between" id="msg-head">
             <div className="d-flex align-items-center ms-2">
-              <Image
-                src="https://plus.unsplash.com/premium_photo-1661333468805-e44347dbbf58?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNvbXB1dGVyJTIwYW5nZXJ8ZW58MHx8MHx8fDA%3D"
-                alt="profile pic"
-                className="rounded-circle"
-                width="40px"
-                height="40px"
-              />
+              <Image src={profile.image} alt="profile pic" className="rounded-circle" width="40px" height="40px" />
               <p className="fw-semibold mb-0 ms-2">Messaggistica</p>
             </div>
             <div className="d-flex align-items-center me-2">
