@@ -1,12 +1,53 @@
-import { Form, InputGroup } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Form, FormGroup, FormLabel, InputGroup } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 function ExperienceModal(props) {
+  const { experience, show, onHide, onSave } = props;
+  const [formData, setFormData] = useState({
+    role: experience ? experience.role : "",
+    company: experience ? experience.company : "",
+    startDate: experience ? experience.startDate : "",
+    endDate: experience ? experience.endDate : "",
+    description: experience ? experience.description : "",
+    area: experience ? experience.area : "",
+    image: experience ? experience.image : "",
+  });
+
+  useEffect(() => {
+    if (experience) {
+      setFormData({
+        role: experience.role,
+        company: experience.company,
+        startDate: experience.startDate,
+        endDate: experience.endDate,
+        description: experience.description,
+        area: experience.area,
+        image: experience.image,
+      });
+    }
+  }, [experience]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSave = () => {
+    onSave(formData);
+    onHide();
+  };
+
   return (
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Aggiungi esperienza</Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">
+          {experience ? "Modifca esperienza" : "Aggiungi esperienza"}
+        </Modal.Title>
       </Modal.Header>
       <Form>
         <Modal.Body>
@@ -121,7 +162,15 @@ function ExperienceModal(props) {
           </InputGroup>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Località*</Form.Label>
-            <Form.Control size="sm" type="text" placeholder="Esempio: Milano, Italia" required />
+            <Form.Control
+              size="sm"
+              type="text"
+              placeholder="Esempio: Milano, Italia"
+              required
+              name="area"
+              value={formData.area}
+              onChange={handleChange}
+            />
           </Form.Group>
           <Form.Label>Tipo di località</Form.Label>
           <Form.Select aria-label="Default select example" size="sm">
@@ -133,11 +182,24 @@ function ExperienceModal(props) {
           <Form.Label>Scegli un tipo di località &#40;es. da remoto&#41;</Form.Label>
           <Form.Group className="mb-3" controlId="DescriptionTextarea1">
             <Form.Label>Descrizione</Form.Label>
-            <Form.Control as="textarea" rows={3} />
+            <Form.Control
+              as="textarea"
+              rows={3}
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+            />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Sommario del profilo</Form.Label>
-            <Form.Control size="sm" type="text" placeholder="Esempio: Retail Sales Manager" />
+            <Form.Control
+              size="sm"
+              type="text"
+              placeholder="Esempio: Retail Sales Manager"
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+            />
             <Form.Label>Compare sotto il tuo nome nella parte superiore del profilo</Form.Label>
           </Form.Group>
           <Form.Label>Dove hai trovato questa offerta di lavoro?</Form.Label>
@@ -179,13 +241,24 @@ function ExperienceModal(props) {
               </a>
               .
             </p>
-            <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill ">
+            {/* <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill ">
               + Aggiungi media
-            </Button>
+            </Button> */}
+
+            <FormGroup>
+              <Form.Label>Immagine</Form.Label>
+              <Form.Control
+                type="text"
+                name="image"
+                value={formData.image}
+                onChange={handleChange}
+                placeholder="Inserisci URL immagine"
+              />
+            </FormGroup>
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary rounded-pill" onClick={props.onHide}>
+          <Button variant="primary rounded-pill" onClick={{ onHide, handleSave }}>
             Salva
           </Button>
         </Modal.Footer>
