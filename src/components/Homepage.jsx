@@ -1,16 +1,20 @@
 import { useState } from "react";
-import { Button, Card, Col, Collapse, Container, Dropdown, Image, ListGroup, Row } from "react-bootstrap";
+import { Button, Card, Col, Collapse, Container, Dropdown, Form, Image, ListGroup, Row } from "react-bootstrap";
 import {
+  BlockquoteLeft,
   BookmarkFill,
   Calendar,
+  CardImage,
   ChevronCompactDown,
   ChevronCompactRight,
   ChevronCompactUp,
+  GlobeEuropeAfrica,
   InfoSquareFill,
   Newspaper,
   PeopleFill,
   PersonFillAdd,
   WalletFill,
+  Youtube,
 } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -140,9 +144,98 @@ const Homepage = () => {
             </Collapse>
           </div>
         </Col>
-        <Col>
-          <p className="border border-secondary">Ciao</p>
+        <Col md={5}>
+          <div className="py-3   bg-white border border-secondary-subtle mb-2  rounded-3">
+            <div className="mb-2">
+              <Image
+                alt="Profilo"
+                width="50px"
+                height="50px"
+                className="rounded-circle border border-light border-2 ms-2 img-fluid"
+                src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+              />
+              <Button
+                className="rounded-pill d-inline-block border-secondary ms-2 text-start fw-semibold"
+                style={{ width: "75%" }}
+                variant="light"
+              >
+                Crea un post
+              </Button>
+            </div>
+            <div className="d-flex justify-content-around align-items-center text-dark ">
+              <Form>
+                <Form.Group controlId="formFile" className="mb-0">
+                  <Form.Label htmlFor="file-upload" className="custom-file-upload" style={{ cursor: "pointer" }}>
+                    <div className="d-flex align-items-center mb-0 mx-2">
+                      <CardImage className="text-primary fs-5" />
+                      <p className="text-dark fw-semibold mb-0 ms-2"> Foto</p>
+                    </div>
+                  </Form.Label>
+                  <Form.Control
+                    type="file"
+                    id="file-upload"
+                    name="file"
+                    className="bg-transparent text-none border-0"
+                  />
+                </Form.Group>
+              </Form>
+              <Form>
+                <Form.Group controlId="formFile" className="mb-0">
+                  <Form.Label htmlFor="file-upload" className="custom-file-upload" style={{ cursor: "pointer" }}>
+                    <div className="d-flex  align-items-center mb-0 mx-2 ">
+                      <Youtube className="text-success fs-5" />
+                      <p className="text-dark fw-semibold mb-0 ms-2">Video</p>
+                    </div>
+                  </Form.Label>
+                  <Form.Control
+                    type="file"
+                    id="file-upload"
+                    name="file"
+                    className="bg-transparent text-none border-0"
+                  />
+                </Form.Group>
+              </Form>
+              <Form>
+                <Form.Group controlId="formFile" className="mb-0">
+                  <Form.Label htmlFor="file-upload" className="custom-file-upload" style={{ cursor: "pointer" }}>
+                    <div className="d-flex  align-items-center mb-0 mx-2">
+                      <BlockquoteLeft className="text-danger" />
+                      <p className="text-dark fw-semibold mb-0 ms-2">Scrivi un articolo</p>
+                    </div>
+                  </Form.Label>
+                  <Form.Control
+                    type="file"
+                    id="file-upload"
+                    name="file"
+                    className="bg-transparent text-none border-0"
+                  />
+                </Form.Group>
+              </Form>
+            </div>
+          </div>
+
+          <div className="py-3  bg-white border border-secondary-subtle mb-2 p-2 rounded-3">
+            <div className="d-flex align-items-center">
+              <img
+                alt="Profilo"
+                width="50px"
+                height="50px"
+                className="rounded-circle border border-light border-2 ms-2 img-fluid"
+                src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+              />
+              <div className="d-flex flex-column">
+                <div className="d-flex ">
+                  <h6 className="mb-0">Nome e Cognome &#8226;</h6> <p className="mb-0">3° e oltre</p>
+                </div>
+                <p className="text-secondary mb-0">Head of GCS Hub Hiring, EMEA & Ireland Market Recruiting Lead</p>
+                <p className="mb-0">
+                  2 giorni fa &#8226; <GlobeEuropeAfrica className="text-secondary fw-semibold" />
+                </p>
+              </div>
+            </div>
+          </div>
         </Col>
+
         <Col md={4}>
           <div className="bg-white border border-secondary-subtle mb-2 py-3 px-2 rounded-3">
             <div className="d-flex justify-content-between">
