@@ -147,10 +147,14 @@ a {
 .global-footer__language-selection-dropdown {
   width: 100%;
   padding: 0.5rem;
-  border: 1px solid #ccc;
+  border: 1.5px solid #4f4f4f;
   border-radius: 4px;
 }
 
 input[type="file"] {
   display: none;
+}
+
+.clicked-link {
+  color: #8443ce !important;
 }

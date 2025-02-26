@@ -4,6 +4,11 @@ import { useState } from "react";
 
 const Footer = () => {
   const [key, setKey] = useState("it_IT");
+  const [clickedLink, setClickedLink] = useState(null);
+
+  const handleLinkClick = (e) => {
+    setClickedLink(e.target.href);
+  };
 
   return (
     <Container
@@ -20,19 +25,41 @@ const Footer = () => {
               tabIndex="0"
               target="_blank"
               href="https://about.linkedin.com/it-it"
-              className="global-footer__link global-footer__link--static t-12 t-bold"
+              className={`global-footer__link global-footer__link--static t-bold ${
+                clickedLink === "https://about.linkedin.com/it-it" ? "clicked-link" : ""
+              }`}
+              onClick={handleLinkClick}
             >
               Informazioni
             </a>
           </p>
-          <p className="global-footer__link-container grid__col  ">
+          <p className="global-footer__link-container grid__col">
             <Dropdown>
-              <Dropdown.Toggle variant="link" className="global-footer__link global-footer__link--static t-12 t-bold p-0">
+              <Dropdown.Toggle variant="link" className="global-footer__link global-footer__link--static t-bold p-0">
                 Privacy e condizioni
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item href="https://www.linkedin.com/legal/privacy-policy">Privacy Policy</Dropdown.Item>
-                <Dropdown.Item href="https://www.linkedin.com/legal/user-agreement">User Agreement</Dropdown.Item>
+                <Dropdown.Item href="https://www.linkedin.com/legal/privacy-policy" onClick={handleLinkClick}>
+                  Informativa sulla Privacy
+                </Dropdown.Item>
+                <Dropdown.Item href="https://www.linkedin.com/legal/user-agreement" onClick={handleLinkClick}>
+                  Contratto di licenza
+                </Dropdown.Item>
+                <Dropdown.Item href="https://it.linkedin.com/legal/l/linkedin-pages-terms?" onClick={handleLinkClick}>
+                  Termini e condizioni delle pagine
+                </Dropdown.Item>
+                <Dropdown.Item href="https://it.linkedin.com/legal/cookie-policy?" onClick={handleLinkClick}>
+                  Informativa sui cookie
+                </Dropdown.Item>
+                <Dropdown.Item href="https://it.linkedin.com/legal/copyright-policy?" onClick={handleLinkClick}>
+                  Informativa sul copyright
+                </Dropdown.Item>
+                <Dropdown.Item
+                  href="https://it.linkedin.com/legal/california-privacy-disclosure?"
+                  onClick={handleLinkClick}
+                >
+                  Opzioni relative all Informativa sulla privacy (Stato della California)
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </p>
@@ -41,7 +68,13 @@ const Footer = () => {
               tabIndex="0"
               target="_blank"
               href="https://business.linkedin.com/sales-solutions?trk=flagship_nav&veh=li-footer-lss-control&src=li-footer"
-              className="global-footer__link global-footer__link--static t-12 t-bold"
+              className={`global-footer__link global-footer__link--static t-bold ${
+                clickedLink ===
+                "https://business.linkedin.com/sales-solutions?trk=flagship_nav&veh=li-footer-lss-control&src=li-footer"
+                  ? "clicked-link"
+                  : ""
+              }`}
+              onClick={handleLinkClick}
             >
               Sales Solutions
             </a>
@@ -51,7 +84,10 @@ const Footer = () => {
               tabIndex="0"
               target="_blank"
               href="https://safety.linkedin.com"
-              className="global-footer__link global-footer__link--static t-12 t-bold"
+              className={`global-footer__link global-footer__link--static t-bold ${
+                clickedLink === "https://safety.linkedin.com" ? "clicked-link" : ""
+              }`}
+              onClick={handleLinkClick}
             >
               Centro sicurezza
             </a>
@@ -63,7 +99,10 @@ const Footer = () => {
               tabIndex="0"
               target="_blank"
               href="https://www.linkedin.com/accessibility"
-              className="global-footer__link global-footer__link--static t-12 t-bold"
+              className={`global-footer__link global-footer__link--static t-bold ${
+                clickedLink === "https://www.linkedin.com/accessibility" ? "clicked-link" : ""
+              }`}
+              onClick={handleLinkClick}
             >
               Accessibilità
             </a>
@@ -73,7 +112,10 @@ const Footer = () => {
               tabIndex="0"
               target="_blank"
               href="https://careers.linkedin.com/"
-              className="global-footer__link global-footer__link--static t-12 t-bold"
+              className={`global-footer__link global-footer__link--static t-bold ${
+                clickedLink === "https://careers.linkedin.com/" ? "clicked-link" : ""
+              }`}
+              onClick={handleLinkClick}
             >
               Carriera
             </a>
@@ -83,7 +125,10 @@ const Footer = () => {
               tabIndex="0"
               target="_blank"
               href="https://www.linkedin.com/help/linkedin/answer/62931?lang=it"
-              className="global-footer__link global-footer__link--static t-12 t-bold"
+              className={`global-footer__link global-footer__link--static t-bold ${
+                clickedLink === "https://www.linkedin.com/help/linkedin/answer/62931?lang=it" ? "clicked-link" : ""
+              }`}
+              onClick={handleLinkClick}
             >
               Opzioni per gli annunci pubblicitari
             </a>
@@ -93,7 +138,10 @@ const Footer = () => {
               tabIndex="0"
               target="_blank"
               href="https://mobile.linkedin.com/it-it"
-              className="global-footer__link global-footer__link--static t-12 t-bold"
+              className={`global-footer__link global-footer__link--static t-bold ${
+                clickedLink === "https://mobile.linkedin.com/it-it" ? "clicked-link" : ""
+              }`}
+              onClick={handleLinkClick}
             >
               Mobile
             </a>
@@ -102,59 +150,70 @@ const Footer = () => {
         <Col>
           <p>
             <span className="d-flex align-items-start">
-              <QuestionCircleFill className="mt-1" size={25} />
+              <QuestionCircleFill className="mt-1 me-2" size={25} />
               <div className="ms-1">
                 <a
                   target="_blank"
                   href="https://www.linkedin.com/help/linkedin?trk=d_flagship3_profile_view_base"
-                  className="global-footer__link global-footer__link--static  t-bold"
+                  className={`global-footer__link global-footer__link--static t-bold ${
+                    clickedLink === "https://www.linkedin.com/help/linkedin?trk=d_flagship3_profile_view_base"
+                      ? "clicked-link"
+                      : ""
+                  }`}
                   aria-label="Domande? Visita il nostro Centro assistenza."
+                  onClick={handleLinkClick}
                 >
                   Domande?
                 </a>
-
-                <p className="global-footer__label t-12">Visita il nostro Centro assistenza.</p>
+                <p className="global-footer__label">Visita il nostro Centro assistenza.</p>
               </div>
             </span>
           </p>
           <p className="display-flex list-style-none mb4"></p>
           <p className="display-flex list-style-none mb4">
             <span className="d-flex">
-              <GearFill className="mt-1" size={25} />
+              <GearFill className="mt-1 me-2" size={25} />
               <div className="ms-1">
                 <a
                   target="_blank"
                   href="https://www.linkedin.com/psettings/"
-                  className="global-footer__link global-footer__link--static  t-bold"
+                  className={`global-footer__link global-footer__link--static t-bold ${
+                    clickedLink === "https://www.linkedin.com/psettings/" ? "clicked-link" : ""
+                  }`}
                   aria-label="Gestisci il tuo account e la tua privacy Vai alle impostazioni"
+                  onClick={handleLinkClick}
                 >
                   Gestisci il tuo account e la tua privacy
                 </a>
-                <p className="global-footer__label t-12">Vai alle impostazioni</p>
+                <p className="global-footer__label">Vai alle impostazioni</p>
               </div>
             </span>
           </p>
           <p className="display-flex list-style-none mb4">
             <span className="d-flex">
-              <ShieldShaded className="mt-1" size={25} />
+              <ShieldShaded className="mt-1 me-2" size={25} />
               <div className="ms-1">
                 <a
                   target="_blank"
                   href="https://www.linkedin.com/help/linkedin/answer/a1339724"
-                  className="global-footer__link global-footer__link--static  t-bold"
+                  className={`global-footer__link global-footer__link--static t-bold ${
+                    clickedLink === "https://www.linkedin.com/help/linkedin/answer/a1339724" ? "clicked-link" : ""
+                  }`}
                   aria-label="Trasparenza sui contenuti consigliati Scopri di più sui contenuti consigliati."
+                  onClick={handleLinkClick}
                 >
                   Trasparenza sui contenuti consigliati
                 </a>
-                <p className="global-footer__label t-12">Scopri di più sui contenuti consigliati.</p>
+                <p className="global-footer__label">Scopri di più sui contenuti consigliati.</p>
               </div>
             </span>
           </p>
         </Col>
         <Col>
+          <p className="global-footer__label mb-2">Seleziona lingua</p>
           <Form.Select
             id="globalfooter-select_language"
-            className="global-footer__language-selection-dropdown  t-black--light t-bold"
+            className="global-footer__language-selection-dropdown t-black--light t-bold"
             activeKey={key}
             onSelect={(k) => setKey(k)}
           >
