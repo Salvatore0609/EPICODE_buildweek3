@@ -3,10 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = [];
 
 const profilesListsSlice = createSlice({
-  name: "profile",
+  name: "profilesLists",
   initialState,
   reducers: {
-    setProfile: (state, action) => {
+    setProfilesList: (state, action) => {
       return action.payload;
     },
     popolateList: (state, action) => {
@@ -15,5 +15,5 @@ const profilesListsSlice = createSlice({
   },
 });
 
-export const { setProfile, popolateList } = profilesListsSlice.actions;
+export const { setProfilesList, popolateList } = profilesListsSlice.actions;
 export default profilesListsSlice.reducer;

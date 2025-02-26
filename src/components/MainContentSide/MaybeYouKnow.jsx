@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Button, Col, Image, Row } from "react-bootstrap";
 import { EyeFill, PersonPlusFill } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { setProfile } from "../../redux/reducers/profileSlice";
+import { setProfilesList } from "../../redux/reducers/profilesLists";
 
 const MaybeYouKnow = () => {
   const API_URL = "https://striveschool-api.herokuapp.com/api/profile/";
@@ -10,10 +10,10 @@ const MaybeYouKnow = () => {
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2JjNTc1ZGU3MDMzNzAwMTUzMTZkYmEiLCJpYXQiOjE3NDAzOTYzODIsImV4cCI6MTc0MTYwNTk4Mn0.ONZKTuW8uMZfm7TTZUQUDzRq8jfZZmWwJ4vefV07-jY";
 
   const dispatch = useDispatch();
-  const profile = useSelector((state) => state.profile);
+  const profiles = useSelector((state) => state.profilesLists);
 
   useEffect(() => {
-    const fetchProfile = async () => {
+    const fetchProfilesList = async () => {
       try {
         const response = await fetch(API_URL, {
           headers: { Authorization: `Bearer ${BEARER_TOKEN}` },
@@ -23,7 +23,7 @@ const MaybeYouKnow = () => {
         }
         const data = await response.json();
         if (Array.isArray(data)) {
-          dispatch(setProfile(data));
+          dispatch(setProfilesList(data));
         } else {
           console.log("i dati ricevuti non sono un Array :", data);
         }
@@ -31,7 +31,7 @@ const MaybeYouKnow = () => {
         console.error("errore nel caricamento dei profili : ", error);
       }
     };
-    fetchProfile();
+    fetchProfilesList();
   }, [dispatch]);
 
   return (
@@ -43,8 +43,8 @@ const MaybeYouKnow = () => {
             <EyeFill /> <p className="m-0">Solo per te</p>
           </div>
         </Col>
-        {profile.length > 0 ? (
-          profile.slice(0, 4).map((profile) => (
+        {profiles.length > 0 ? (
+          profiles.slice(0, 4).map((profile) => (
             <div key={profile._id} className="mt-3">
               <Row>
                 <Col xs={3}>
@@ -74,8 +74,8 @@ const MaybeYouKnow = () => {
           <p>persone che potresti conoscere</p>
           <p className="m-0 text-secondary">Dalla tua azienza</p>
         </Col>
-        {profile.length > 5 ? (
-          profile.slice(5, 9).map((profile) => (
+        {profiles.length > 5 ? (
+          profiles.slice(5, 9).map((profile) => (
             <div key={profile._id} className="mt-3">
               <Row>
                 <Col xs={3}>
