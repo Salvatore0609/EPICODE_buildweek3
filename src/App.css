@@ -67,6 +67,11 @@ a {
 .Cerca {
   background-color: #edf3f8;
   border: none;
+  width: 200px;
+}
+.search-icon {
+  position: absolute;
+  top: 50%;
 }
 
 .input-zone {
