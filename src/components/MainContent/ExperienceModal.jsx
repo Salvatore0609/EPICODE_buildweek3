@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Form, FormGroup, FormLabel, InputGroup } from "react-bootstrap";
+import { Form, FormGroup, InputGroup } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
@@ -38,16 +38,20 @@ function ExperienceModal(props) {
   };
 
   const handleSave = () => {
-    onSave(formData);
-    onHide();
+    console.log({ formData });
+    if (!formData.role || !formData.company || !formData.area) {
+      alert("Tutti i campi obbligatori devono essere compilati.");
+      return;
+    } else {
+      onSave(formData);
+      onHide();
+    }
   };
 
   return (
-    <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+    <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" show={show} onHide={onHide} centered>
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          {experience ? "Modifca esperienza" : "Aggiungi esperienza"}
-        </Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">{experience ? "Modifca esperienza" : "Aggiungi esperienza"}</Modal.Title>
       </Modal.Header>
       <Form>
         <Modal.Body>
@@ -55,9 +59,8 @@ function ExperienceModal(props) {
             <div>
               <h6>Informa la rete</h6>
               <p>
-                Attiva l’opzione per informare la tua rete delle principali modifiche al profilo (ad esempio un nuovo
-                lavoro) e degli anniversari lavorativi. Gli aggiornamenti possono richiedere fino a 2 ore. Scopri di più
-                sulla{" "}
+                Attiva l’opzione per informare la tua rete delle principali modifiche al profilo (ad esempio un nuovo lavoro) e degli anniversari
+                lavorativi. Gli aggiornamenti possono richiedere fino a 2 ore. Scopri di più sulla{" "}
                 <a
                   href="https://www.linkedin.com/help/linkedin/answer/a529062/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_add_position%3BF0GRgfBiTMG9MjkwifelQQ%3D%3D"
                   target="_blank"
@@ -94,7 +97,15 @@ function ExperienceModal(props) {
           </Form.Select>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Azienda o organizzazione*</Form.Label>
-            <Form.Control size="sm" type="text" placeholder="Esempio: Microsoft" required />
+            <Form.Control
+              size="sm"
+              type="text"
+              placeholder="Esempio: Microsoft"
+              name="company"
+              value={formData.company}
+              onChange={handleChange}
+              required
+            />
           </Form.Group>
           <Form.Check // prettier-ignore
             type="checkbox"
@@ -182,13 +193,7 @@ function ExperienceModal(props) {
           <Form.Label>Scegli un tipo di località &#40;es. da remoto&#41;</Form.Label>
           <Form.Group className="mb-3" controlId="DescriptionTextarea1">
             <Form.Label>Descrizione</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={3}
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-            />
+            <Form.Control as="textarea" rows={3} name="description" value={formData.description} onChange={handleChange} />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Sommario del profilo</Form.Label>
@@ -222,13 +227,8 @@ function ExperienceModal(props) {
           />
           <div>
             <h5>Competenze</h5>
-            <p>
-              Ti consigliamo di aggiungere le 5 competenze più utilizzate in questo ruolo. Appariranno anche nella
-              sezione Competenze.
-            </p>
-            <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill ">
-              + Aggiungi competenza
-            </Button>
+            <p>Ti consigliamo di aggiungere le 5 competenze più utilizzate in questo ruolo. Appariranno anche nella sezione Competenze.</p>
+            <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill ">+ Aggiungi competenza</Button>
             <h5>Media</h5>
             <p>
               Aggiungi contenuti multimediali come immagini, documenti, siti o presentazioni. Scopri di più sui{" "}
@@ -247,18 +247,18 @@ function ExperienceModal(props) {
 
             <FormGroup>
               <Form.Label>Immagine</Form.Label>
-              <Form.Control
-                type="text"
-                name="image"
-                value={formData.image}
-                onChange={handleChange}
-                placeholder="Inserisci URL immagine"
-              />
+              <Form.Control type="text" name="image" value={formData.image} onChange={handleChange} placeholder="Inserisci URL immagine" />
             </FormGroup>
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary rounded-pill" onClick={{ onHide, handleSave }}>
+          <Button
+            variant="primary rounded-pill"
+            onClick={() => {
+              handleSave();
+              onHide();
+            }}
+          >
             Salva
           </Button>
         </Modal.Footer>

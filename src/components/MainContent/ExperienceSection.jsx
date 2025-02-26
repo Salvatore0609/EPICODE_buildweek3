@@ -4,18 +4,27 @@ import { Pencil, PlusLg, SuitcaseLgFill, XLg } from "react-bootstrap-icons";
 import { useEffect, useState } from "react";
 import ExperienceModal from "./ExperienceModal";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchExperiece } from "../../redux/action/experienceAction";
+import { fetchExperience } from "../../redux/action/experienceAction";
+import { addExperience } from "../../redux/reducers/experienceSlice";
 
 const ExperienceSection = ({ userId }) => {
   const [modalShow, setModalShow] = useState(false);
   const [editExp, setEditExp] = useState(null);
   const dispatch = useDispatch();
   const experiences = useSelector((state) => state.experience.experiences);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchExperiece(userId)).finally(() => setLoading(false));
+    if (userId) {
+      dispatch(fetchExperience(userId)).finally(() => setLoading(false));
+    }
   }, [dispatch, userId]);
+
+  const handleSave = (data) => {
+    console.log("Dati salvati:", data);
+
+    dispatch(addExperience(data));
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -64,10 +73,7 @@ const ExperienceSection = ({ userId }) => {
                 <div className="d-flex">
                   <XLg />
                 </div>
-                <p>
-                  Metti in risalto i risultati raggiunti e ottieni fino a 2 volte più visualizzazioni del profilo e
-                  collegamenti
-                </p>
+                <p>Metti in risalto i risultati raggiunti e ottieni fino a 2 volte più visualizzazioni del profilo e collegamenti</p>
                 <div className="d-flex">
                   <SuitcaseLgFill className="text-secondary pt-1 fs-4" />
 
@@ -86,7 +92,7 @@ const ExperienceSection = ({ userId }) => {
                   <PlusLg />
                 </Button>
 
-                <ExperienceModal show={modalShow} onHide={() => setModalShow(false)} experience={editExp} />
+                <ExperienceModal show={modalShow} onHide={() => setModalShow(false)} experience={editExp} onSave={handleSave} />
               </div>
             </Col>
           </Row>
