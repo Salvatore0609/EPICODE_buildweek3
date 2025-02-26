@@ -1,22 +1,43 @@
 import { Button, Col, Container, Form, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
-import { BarChart, Bullseye, CardChecklist, CompassFill, Grid3x3Gap, PeopleFill, PersonCheckFill, PlayBtnFill, Plus } from "react-bootstrap-icons";
+import {
+  BarChart,
+  Bullseye,
+  CardChecklist,
+  CompassFill,
+  Grid3x3Gap,
+  PeopleFill,
+  PersonCheckFill,
+  PlayBtnFill,
+  Plus,
+  Search,
+} from "react-bootstrap-icons";
 
 const TopBar = () => {
   return (
     <>
       <Navbar className="bg-white MyNav " sticky="top">
-        <Container fluid>
+        <Container fluid className=" p-0">
           <Navbar.Brand href="#" className="nav-brand">
-            <img src="https://brandlogos.net/wp-content/uploads/2016/06/linkedin-logo.png" alt="logo" width="60" height="60" />
+            <img
+              src="https://brandlogos.net/wp-content/uploads/2016/06/linkedin-logo.png"
+              alt="logo"
+              width="60"
+              height="60"
+            />
           </Navbar.Brand>
           <Form className="d-flex input-zone">
             <Form.Control type="search" placeholder="Cerca" className="me-2 Cerca" aria-label="Search" />
+            <Search className="search-icon" />
           </Form>
 
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0">
-              <Nav.Link href="#action1" className="d-flex flex-column ">
+              <Nav.Link
+                href="#action1"
+                className="d-flex flex-column justify-content-center
+               "
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -33,7 +54,7 @@ const TopBar = () => {
                   Home
                 </a>
               </Nav.Link>
-              <Nav.Link href="#" className="d-flex flex-column ">
+              <Nav.Link href="#" className="d-flex flex-column justify-content-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -50,7 +71,7 @@ const TopBar = () => {
                   Rete
                 </a>
               </Nav.Link>
-              <Nav.Link href="#" className="d-flex flex-column ">
+              <Nav.Link href="#" className="d-flex flex-column justify-content-center ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -67,7 +88,7 @@ const TopBar = () => {
                   Lavoro
                 </a>
               </Nav.Link>
-              <Nav.Link href="#" className="d-flex flex-column ">
+              <Nav.Link href="#" className="d-flex flex-column justify-content-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -84,7 +105,7 @@ const TopBar = () => {
                   Messaggistica
                 </a>
               </Nav.Link>
-              <Nav.Link href="#" className="d-flex flex-column ">
+              <Nav.Link href="#" className="d-flex flex-column justify-content-center ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -102,12 +123,12 @@ const TopBar = () => {
                 </a>
               </Nav.Link>
 
-              <Nav.Link>
+              <Nav.Link className="d-flex flex-column justify-content-center ">
                 <img
                   alt="profile pic"
                   width="24"
                   height="24"
-                  className="rounded-circle "
+                  className="rounded-circle  "
                   src="https://plus.unsplash.com/premium_photo-1661333468805-e44347dbbf58?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNvbXB1dGVyJTIwYW5nZXJ8ZW58MHx8MHx8fDA%3D"
                 />
                 <NavDropdown title="Tu" id="navbarScrollingDropdown">
@@ -277,8 +298,8 @@ const TopBar = () => {
                   </Row>
                 </NavDropdown>
               </Nav.Link>
-              <Nav.Link>
-                <a href="#" className="premium-a ">
+              <Nav.Link className="d-flex  justify-content-center ">
+                <a href="#" className="premium-a  ">
                   Prova premium per 0 EUR
                 </a>
               </Nav.Link>

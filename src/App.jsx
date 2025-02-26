@@ -3,14 +3,17 @@ import TopBar from "./components/TopBar";
 import MainContent from "./components/MainContent";
 import Footer from "./components/Footer";
 import MessageBar from "./components/MessageBar";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <TopBar />
-      <MainContent />
-      <MessageBar />
-      <Footer />
+      <BrowserRouter>
+        <TopBar />
+        <MainContent />
+        <Footer />
+        <MessageBar />
+      </BrowserRouter>
     </>
   );
 }
