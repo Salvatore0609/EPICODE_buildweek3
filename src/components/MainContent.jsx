@@ -13,7 +13,7 @@ import Interestings from "./MainContentSide/Interestings";
 const MainContent = () => {
   return (
     <Container>
-      <Row className="gap-4 d-flex justify-content-center border-0 ">
+      <Row className="gap-4 d-flex flex-nowrap justify-content-center border-0 ">
         <Col md={8}>
           {/* PANNELLO PRINCIPALE */}
           <ProfileSection />
@@ -30,7 +30,7 @@ const MainContent = () => {
           <InterestSection />
         </Col>
         {/* ----------- */}
-        <Col md={2}>
+        <Col md={4}>
           {/* SETTINGS PROFILO */}
           <ProfileSettings />
           {/* ALTRE VISUALIZZAZIONI */}

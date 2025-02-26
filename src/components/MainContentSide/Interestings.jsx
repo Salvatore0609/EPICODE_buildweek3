@@ -4,7 +4,7 @@ import { PlusLg } from "react-bootstrap-icons";
 const Interestings = () => {
   return (
     <>
-      <Row className="border border-2 border-secondary-subtle  mt-3">
+      <Row className="border rounded-2 bg-white  mt-3">
         <Col>
           <p>Potrebbe interessarti</p>
           <p className="m-0 text-secondary">Pagine per te</p>

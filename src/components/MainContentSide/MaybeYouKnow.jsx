@@ -36,7 +36,7 @@ const MaybeYouKnow = () => {
 
   return (
     <>
-      <Row className="border border-2 border-secondary-subtle  mt-3">
+      <Row className="border rounded-2 bg-white  mt-3">
         <Col>
           <p className="mb-0">Altre visualizzazioni</p>
           <div className="d-flex align-items-center m-0">
@@ -69,7 +69,7 @@ const MaybeYouKnow = () => {
         </Row>
       </Row>
 
-      <Row className="border border-2 border-secondary-subtle   mt-3">
+      <Row className="border rounded-2 bg-white   mt-3">
         <Col>
           <p>persone che potresti conoscere</p>
           <p className="m-0 text-secondary">Dalla tua azienza</p>
