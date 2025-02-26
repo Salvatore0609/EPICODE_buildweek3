@@ -30,14 +30,11 @@ const MainContent = () => {
           <InterestSection />
         </Col>
         {/* ----------- */}
-
         <Col md={2}>
           {/* SETTINGS PROFILO */}
           <ProfileSettings />
           {/* ALTRE VISUALIZZAZIONI */}
-
           <MaybeYouKnow />
-
           {/* POTREBBE INTERESSARTI */}
           <Interestings />
         </Col>
