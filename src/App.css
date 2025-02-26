@@ -164,3 +164,9 @@ input[type="file"] {
 .clicked-link {
   color: #8443ce !important;
 }
+
+.no-dots {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}

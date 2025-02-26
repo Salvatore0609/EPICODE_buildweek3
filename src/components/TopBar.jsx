@@ -11,6 +11,7 @@ import {
   Plus,
   Search,
 } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
 const TopBar = () => {
   return (
@@ -33,9 +34,9 @@ const TopBar = () => {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0">
-              <Nav.Link
-                href="#action1"
-                className="d-flex flex-column justify-content-center
+              <Link
+                to="/"
+                className="d-flex flex-column justify-content-center nav-link
                "
               >
                 <svg
@@ -53,7 +54,7 @@ const TopBar = () => {
                 <a href="#" className="nav-paragraphs">
                   Home
                 </a>
-              </Nav.Link>
+              </Link>
               <Nav.Link href="#" className="d-flex flex-column justify-content-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
