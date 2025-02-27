@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Form, FormGroup, InputGroup } from "react-bootstrap";
+import { Form, InputGroup } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
@@ -8,26 +8,34 @@ function ExperienceModal(props) {
   const [formData, setFormData] = useState({
     role: experience ? experience.role : "",
     company: experience ? experience.company : "",
-    startDate: experience ? experience.startDate : "",
-    endDate: experience ? experience.endDate : "",
+    startMonth: experience ? experience.startDate.split("-")[1] : "",
+    startYear: experience ? experience.startDate.split("-")[0] : "",
+    endMonth: experience ? experience.endDate.split("-")[1] : "",
+    endYear: experience ? experience.endDate.split("-")[0] : "",
     description: experience ? experience.description : "",
     area: experience ? experience.area : "",
-    image: experience ? experience.image : "",
+    image: experience ? experience.image || null : null,
   });
 
   useEffect(() => {
     if (experience) {
+      const [startYear, startMonth] = experience.startDate ? experience.startDate.split("-") : ["", ""];
+      const [endYear, endMonth] = experience.endDate ? experience.endDate.split("-") : ["", ""];
       setFormData({
         role: experience.role,
         company: experience.company,
-        startDate: experience.startDate,
-        endDate: experience.endDate,
+        startMonth,
+        startYear,
+        endMonth,
+        endYear,
         description: experience.description,
         area: experience.area,
         image: experience.image,
       });
     }
   }, [experience]);
+
+  const [imageFile, setImageFile] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,15 +45,40 @@ function ExperienceModal(props) {
     });
   };
 
+  const handleDateChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => {
+      const updatedData = { ...prev, [name]: value };
+      if (updatedData.startMonth && updatedData.startYear) {
+        updatedData.startDate = `${updatedData.startYear}/${updatedData.startMonth}`;
+      }
+      if (updatedData.endMonth && updatedData.endYear) {
+        updatedData.endDate = `${updatedData.endYear}/${updatedData.endMonth}`;
+      }
+      return updatedData;
+    });
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+
+      setImageFile(imageUrl);
+    }
+  };
+
   const handleSave = () => {
     console.log({ formData });
     if (!formData.role || !formData.company || !formData.area) {
       alert("Tutti i campi obbligatori devono essere compilati.");
       return;
-    } else {
-      onSave(formData);
-      onHide();
     }
+    /*  */
+    const updatedFormData = { ...formData, image: imageFile || formData.image };
+
+    onSave(updatedFormData);
+    onHide();
   };
 
   return (
@@ -81,7 +114,15 @@ function ExperienceModal(props) {
           <p className="">* Indica che è obbligatorio</p>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Qualifica*</Form.Label>
-            <Form.Control size="sm" type="text" placeholder="Esempio: Retail Sales Manager" required />
+            <Form.Control
+              size="sm"
+              type="text"
+              placeholder="Esempio: Retail Sales Manager"
+              required
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+            />
           </Form.Group>
           <Form.Label>Tipo di impiego</Form.Label>
           <Form.Select aria-label="Default select example" size="sm">
@@ -115,60 +156,92 @@ function ExperienceModal(props) {
 
           <Form.Label>Data di inizio*</Form.Label>
           <InputGroup className="mb-3">
-            <Form.Select aria-label="Default select example" size="sm" className="me-1" required>
+            <Form.Select
+              aria-label="Default select example"
+              size="sm"
+              className="me-1"
+              required
+              name="startMonth"
+              value={formData.startMonth}
+              onChange={handleDateChange}
+            >
               <option>Mese</option>
-              <option value="1">Gennaio</option>
-              <option value="2">Febbraio</option>
-              <option value="3">Marzo</option>
-              <option value="4">Aprile</option>
-              <option value="5">Maggio</option>
-              <option value="6">Giugno</option>
-              <option value="7">Luglio</option>
-              <option value="8">Agosto</option>
-              <option value="9">Settembre</option>
-              <option value="10">Ottobre</option>
-              <option value="11">Novembre</option>
-              <option value="12">Dicembre</option>
+              <option value="Gennaio">Gennaio</option>
+              <option value="Febbraio">Febbraio</option>
+              <option value="Marzo">Marzo</option>
+              <option value="Aprile">Aprile</option>
+              <option value="Maggio">Maggio</option>
+              <option value="Giugno">Giugno</option>
+              <option value="Luglio">Luglio</option>
+              <option value="Agosto">Agosto</option>
+              <option value="Settembre">Settembre</option>
+              <option value="Ottobre">Ottobre</option>
+              <option value="Novembre">Novembre</option>
+              <option value="Dicembre">Dicembre</option>
             </Form.Select>
-            <Form.Select aria-label="Default select example" size="sm" className="ms-1" required>
+            <Form.Select
+              aria-label="Default select example"
+              size="sm"
+              className="ms-1"
+              required
+              name="startYear"
+              value={formData.startYear}
+              onChange={handleDateChange}
+            >
               <option>Anno</option>
-              <option value="1">2025</option>
-              <option value="2">2024</option>
-              <option value="3">2023</option>
-              <option value="4">2022</option>
-              <option value="5">2021</option>
-              <option value="6">2020</option>
-              <option value="7">2019</option>
-              <option value="8">2018</option>
+              <option value="2025">2025</option>
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+              <option value="2021">2021</option>
+              <option value="2020">2020</option>
+              <option value="2019">2019</option>
+              <option value="2018">2018</option>
             </Form.Select>
           </InputGroup>
           <Form.Label>Data di fine*</Form.Label>
           <InputGroup className="mb-3">
-            <Form.Select aria-label="Default select example" size="sm" className="me-1" required>
+            <Form.Select
+              aria-label="Default select example"
+              size="sm"
+              className="me-1"
+              required
+              name="endMonth"
+              value={formData.endMonth}
+              onChange={handleDateChange}
+            >
               <option>Mese</option>
-              <option value="1">Gennaio</option>
-              <option value="2">Febbraio</option>
-              <option value="3">Marzo</option>
-              <option value="4">Aprile</option>
-              <option value="5">Maggio</option>
-              <option value="6">Giugno</option>
-              <option value="7">Luglio</option>
-              <option value="8">Agosto</option>
-              <option value="9">Settembre</option>
-              <option value="10">Ottobre</option>
-              <option value="11">Novembre</option>
-              <option value="12">Dicembre</option>
+              <option value="Gennaio">Gennaio</option>
+              <option value="Febbraio">Febbraio</option>
+              <option value="Marzo">Marzo</option>
+              <option value="Aprile">Aprile</option>
+              <option value="Maggio">Maggio</option>
+              <option value="Giugno">Giugno</option>
+              <option value="Luglio">Luglio</option>
+              <option value="Agosto">Agosto</option>
+              <option value="Settembre">Settembre</option>
+              <option value="Ottobre">Ottobre</option>
+              <option value="Novembre">Novembre</option>
+              <option value="Dicembre">Dicembre</option>
             </Form.Select>
-            <Form.Select aria-label="Default select example" size="sm" className="ms-1" required>
+            <Form.Select
+              aria-label="Default select example"
+              size="sm"
+              className="ms-1"
+              required
+              name="endYear"
+              value={formData.endYear}
+              onChange={handleDateChange}
+            >
               <option>Anno</option>
-              <option value="1">2025</option>
-              <option value="2">2024</option>
-              <option value="3">2023</option>
-              <option value="4">2022</option>
-              <option value="5">2021</option>
-              <option value="6">2020</option>
-              <option value="7">2019</option>
-              <option value="8">2018</option>
+              <option value="2025">2025</option>
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+              <option value="2021">2021</option>
+              <option value="2020">2020</option>
+              <option value="2019">2019</option>
+              <option value="2018">2018</option>
             </Form.Select>
           </InputGroup>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -197,14 +270,7 @@ function ExperienceModal(props) {
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Sommario del profilo</Form.Label>
-            <Form.Control
-              size="sm"
-              type="text"
-              placeholder="Esempio: Retail Sales Manager"
-              name="role"
-              value={formData.role}
-              onChange={handleChange}
-            />
+            <Form.Control size="sm" type="text" placeholder="Esempio: Retail Sales Manager" />
             <Form.Label>Compare sotto il tuo nome nella parte superiore del profilo</Form.Label>
           </Form.Group>
           <Form.Label>Dove hai trovato questa offerta di lavoro?</Form.Label>
@@ -244,11 +310,15 @@ function ExperienceModal(props) {
             {/* <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill ">
               + Aggiungi media
             </Button> */}
-
-            <FormGroup>
-              <Form.Label>Immagine</Form.Label>
-              <Form.Control type="text" name="image" value={formData.image} onChange={handleChange} placeholder="Inserisci URL immagine" />
-            </FormGroup>
+            <Form.Group className="mb-3" controlId="image">
+              <Form.Label>Carica Immagine</Form.Label>
+              {formData.image && (
+                <div>
+                  <img src={formData.image} alt="Immagine caricata" style={{ width: "100px", height: "100px", objectFit: "cover" }} />
+                </div>
+              )}
+              <Form.Control type="file" name="image" onChange={handleImageChange} />
+            </Form.Group>
           </div>
         </Modal.Body>
         <Modal.Footer>

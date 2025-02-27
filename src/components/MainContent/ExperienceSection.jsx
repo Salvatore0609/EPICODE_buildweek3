@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import ExperienceModal from "./ExperienceModal";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchExperience } from "../../redux/action/experienceAction";
-import { addExperience } from "../../redux/reducers/experienceSlice";
+import { addExperience, updateExperience } from "../../redux/reducers/experienceSlice";
 
 const ExperienceSection = ({ userId }) => {
   const [modalShow, setModalShow] = useState(false);
@@ -26,6 +26,12 @@ const ExperienceSection = ({ userId }) => {
     dispatch(addExperience(data));
   };
 
+  const handleEditSave = (data) => {
+    console.log("Dati salvati:", data);
+
+    dispatch(updateExperience(data));
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -34,8 +40,17 @@ const ExperienceSection = ({ userId }) => {
     <>
       <Row className="border bg-white rounded-2  mt-3">
         <Row>
-          <Col>
+          <Col className="d-flex mt-2">
             <h3 className="me-auto">Esperienze</h3>
+            <Button
+              className="bg-transparent text-dark border-0  "
+              onClick={() => {
+                setEditExp(null);
+                setModalShow(true);
+              }}
+            >
+              <PlusLg />
+            </Button>
           </Col>
         </Row>
         {experiences && experiences.length > 0 ? (
@@ -50,19 +65,21 @@ const ExperienceSection = ({ userId }) => {
                   {exp.company}-{exp.area}
                 </p>
                 <p>
-                  {exp.startDate}-{exp.endDate}
+                  {exp.startDate} - {exp.endDate}
                 </p>
                 <p>{exp.area}</p>
               </Col>
               <Col xs={2} className="d-flex align-items-center justify-content-end">
-                <Pencil
-                  role="button"
-                  className="me-3"
+                <Button
+                  className="bg-transparent text-dark border-0 "
                   onClick={() => {
                     setEditExp(exp);
                     setModalShow(true);
                   }}
-                />
+                >
+                  <Pencil />
+                </Button>
+                <ExperienceModal show={modalShow} onHide={() => setModalShow(false)} experience={editExp} onSave={handleEditSave} />
               </Col>
             </Row>
           ))
@@ -83,14 +100,6 @@ const ExperienceSection = ({ userId }) => {
                     <p className="m-0">2023-presente</p>
                   </div>
                 </div>
-                <Button
-                  className="me-3 bg-transparent text-primary border border-primary rounded-pill "
-                  onClick={() => {
-                    setModalShow(true), setEditExp(null);
-                  }}
-                >
-                  <PlusLg />
-                </Button>
 
                 <ExperienceModal show={modalShow} onHide={() => setModalShow(false)} experience={editExp} onSave={handleSave} />
               </div>
