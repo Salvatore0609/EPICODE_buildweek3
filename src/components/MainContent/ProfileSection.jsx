@@ -7,6 +7,8 @@ import { fetchProfile, updateProfile } from "../../redux/action/profileAction";
 import EditProfileModal from "./EditProfilModal";
 import ProfileBgModal from "./ProfileBgModal";
 import ProfilePicModal from "../ProfilePicModal";
+import setEditExp from "./ExperienceSection";
+import setModalShow from "./ExperienceSection";
 
 const ProfileSection = () => {
   const dispatch = useDispatch();
@@ -62,7 +64,12 @@ const ProfileSection = () => {
             <Button variant="transparent" onClick={handleShowEditModal} className="d-flex justify-content-end mt-2">
               <Pencil />
             </Button>
-            <EditProfileModal show={showEditModal} handleClose={handleCloseEditModal} profile={profile} onSave={handleProfileUpdate} />
+            <EditProfileModal
+              show={showEditModal}
+              handleClose={handleCloseEditModal}
+              profile={profile}
+              onSave={handleProfileUpdate}
+            />
 
             <Card.Body className="mt-3">
               <div className="d-flex mt-3">
@@ -80,12 +87,25 @@ const ProfileSection = () => {
                 <p>{profile.area}</p>
                 <p>Collegamenti (amicizie)</p>
               </Card.Text>
-              <Button className="me-3 rounded-pill" variant="primary">
+              <Button className="me-3 rounded-pill" variant="primary" onClick={handleShowEditModal}>
                 Modifica profilo
               </Button>
-              <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill">Aggiungi esperienze</Button>
-              <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill">Visualizza attività</Button>
-              <Button className="me-3 bg-transparent text-secondary border border-secondary-subtle rounded-pill">Altro</Button>
+
+              <Button
+                className="me-3 bg-transparent text-primary border border-primary rounded-pill"
+                onClick={() => {
+                  setEditExp(null);
+                  setModalShow(true);
+                }}
+              >
+                Aggiungi esperienze
+              </Button>
+              <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill">
+                Visualizza attività
+              </Button>
+              <Button className="me-3 bg-transparent text-secondary border border-secondary-subtle rounded-pill">
+                Altro
+              </Button>
             </Card.Body>
           </Card>
         </Col>
@@ -100,10 +120,14 @@ const ProfileSection = () => {
           <div className="border border-secondary-subtle border-1 bg-transparent rounded-3 p-3 mb-3">
             <div className="d-flex">
               <Image src="https://static.licdn.com/aero-v1/sc/h/db05fgvyq7n2ng4fiexgf4hcq" />
-              <strong>Scrivi un riepilogo per mettere in evidenza la tua personalità o la tua esperienza lavorativa</strong>
+              <strong>
+                Scrivi un riepilogo per mettere in evidenza la tua personalità o la tua esperienza lavorativa
+              </strong>
             </div>
             <p>Gli utenti che includono un riepilogo ricevono fino a 3,9 volte più visualizzazioni del profilo.</p>
-            <Button className="bg-transparent text-secondary border border-secondary-subtle rounded-pill">Aggiungi un riepilogo</Button>
+            <Button className="bg-transparent text-secondary border border-secondary-subtle rounded-pill">
+              Aggiungi un riepilogo
+            </Button>
           </div>
         </Col>
       </Row>

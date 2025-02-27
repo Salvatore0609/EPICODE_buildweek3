@@ -79,7 +79,12 @@ const ExperienceSection = ({ userId }) => {
                 >
                   <Pencil />
                 </Button>
-                <ExperienceModal show={modalShow} onHide={() => setModalShow(false)} experience={editExp} onSave={handleEditSave} />
+                <ExperienceModal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                  experience={editExp}
+                  onSave={handleEditSave}
+                />
               </Col>
             </Row>
           ))
@@ -90,7 +95,10 @@ const ExperienceSection = ({ userId }) => {
                 <div className="d-flex">
                   <XLg />
                 </div>
-                <p>Metti in risalto i risultati raggiunti e ottieni fino a 2 volte più visualizzazioni del profilo e collegamenti</p>
+                <p>
+                  Metti in risalto i risultati raggiunti e ottieni fino a 2 volte più visualizzazioni del profilo e
+                  collegamenti
+                </p>
                 <div className="d-flex">
                   <SuitcaseLgFill className="text-secondary pt-1 fs-4" />
 
@@ -101,7 +109,12 @@ const ExperienceSection = ({ userId }) => {
                   </div>
                 </div>
 
-                <ExperienceModal show={modalShow} onHide={() => setModalShow(false)} experience={editExp} onSave={handleSave} />
+                <ExperienceModal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                  experience={editExp}
+                  onSave={handleSave}
+                />
               </div>
             </Col>
           </Row>
