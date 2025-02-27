@@ -136,17 +136,22 @@ const TopBar = () => {
                   <Row className="you-section">
                     <Col>
                       <NavDropdown.Item>
-                        <img
-                          alt="profile pic"
-                          width="55"
-                          height="55"
-                          className="rounded-circle"
-                          src="https://plus.unsplash.com/premium_photo-1661333468805-e44347dbbf58?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNvbXB1dGVyJTIwYW5nZXJ8ZW58MHx8MHx8fDA%3D"
-                        />
-                        <span className="fw-bold ms-2 ">Salvatore Desole</span>
+                        <Link to="/main-content">
+                          <img
+                            alt="profile pic"
+                            width="55"
+                            height="55"
+                            className="rounded-circle"
+                            src="https://plus.unsplash.com/premium_photo-1661333468805-e44347dbbf58?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNvbXB1dGVyJTIwYW5nZXJ8ZW58MHx8MHx8fDA%3D"
+                          />
+
+                          <span className="fw-bold ms-2 ">Salvatore Desole</span>
+                        </Link>
                       </NavDropdown.Item>
                       <NavDropdown.Item href="#">
-                        <Button variant="outline-primary rounded-5 px-3 pb-3 ">Visualizza profilo</Button>
+                        <Link to="/main-content">
+                          <Button variant="outline-primary rounded-5 px-3 pb-3 ">Visualizza profilo</Button>
+                        </Link>
                         <Button variant="primary" className="ms-3 rounded-5 px-4 pb-3">
                           Verifica
                         </Button>

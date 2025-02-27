@@ -9,6 +9,7 @@ import ActivitySection from "./MainContent/ActivitySection";
 import ProfileSettings from "./MainContentSide/ProfileSettings";
 import MaybeYouKnow from "./MainContentSide/MaybeYouKnow";
 import Interestings from "./MainContentSide/Interestings";
+import Footer from "./MainContent/Footer";
 
 const MainContent = () => {
   return (
@@ -39,6 +40,7 @@ const MainContent = () => {
           <Interestings />
         </Col>
       </Row>
+      <Footer />
     </Container>
   );
 };

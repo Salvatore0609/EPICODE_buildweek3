@@ -551,9 +551,6 @@ const Homepage = () => {
           </div>
         </Col>
       </Row>
-      <Link to="/main-content" className="btn btn-info m-5 text-light d-block">
-        Go to Profile
-      </Link>
     </Container>
   );
 };
