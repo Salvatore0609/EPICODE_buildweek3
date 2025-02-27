@@ -1,4 +1,4 @@
-import { addExperience, removeExperience } from "../reducers/experienceSlice";
+import { addExperience, removeExperience, updateExperience } from "../reducers/experienceSlice";
 
 const API_URL = "https://striveschool-api.herokuapp.com/api/profile";
 const BEARER_TOKEN =
@@ -22,7 +22,7 @@ export const fetchExperience = (userId) => async (dispatch) => {
   }
 };
 
-export const createExperience = (userId, experience) => async (dispatch) => {
+export const createExperience = (userId, experience, imageFile) => async (dispatch) => {
   try {
     const response = await fetch(`${API_URL}/${userId}/experiences`, {
       method: "POST",
@@ -36,6 +36,31 @@ export const createExperience = (userId, experience) => async (dispatch) => {
       throw new Error("Errore nel salvataggio dell'esperienza");
     }
     const data = await response.json();
+    dispatch(addExperience(data));
+    /* immagine */
+    if (imageFile) {
+      const formData = new FormData();
+      formData.append("experience", imageFile);
+
+      const imageResponse = await fetch(`${API_URL}/${userId}/experiences/${data._id}/picture`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${BEARER_TOKEN}`,
+        },
+        body: formData,
+      });
+
+      if (!imageResponse.ok) {
+        throw new Error("Errore nel caricamento dell'immagine");
+      }
+
+      const imageData = await imageResponse.json();
+
+      data.image = imageData.url;
+    } else {
+      data.image = null;
+    }
+
     dispatch(addExperience(data));
   } catch (error) {
     console.error("Errore durante la creazione dell'esperienza:", error);
@@ -56,7 +81,7 @@ export const editExperience = (userId, expId, updateExp) => async (dispatch) => 
       throw new Error("Errore nell'aggiornamento dell'esperienza");
     }
     const data = await response.json();
-    dispatch(addExperience(data));
+    dispatch(updateExperience(data));
   } catch (error) {
     console.error("Errore durante l'aggiornamento dell'esperienza:", error);
   }
