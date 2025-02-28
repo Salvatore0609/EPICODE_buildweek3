@@ -15,7 +15,7 @@ const MainContent = () => {
   return (
     <Container>
       <Row className="gap-4 d-flex flex-nowrap justify-content-center border-0 ">
-        <Col md={8}>
+        <Col md={9}>
           {/* PANNELLO PRINCIPALE */}
           <ProfileSection />
           {/* ANALISI */}
@@ -31,7 +31,7 @@ const MainContent = () => {
           <InterestSection />
         </Col>
         {/* ----------- */}
-        <Col md={4}>
+        <Col md={3}>
           {/* SETTINGS PROFILO */}
           <ProfileSettings />
           {/* ALTRE VISUALIZZAZIONI */}
