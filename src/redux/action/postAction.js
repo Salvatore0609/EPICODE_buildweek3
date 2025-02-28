@@ -1,10 +1,10 @@
-import { addPost, removePost } from "../reducers/postSlice";
+import { addPost, removePost, updatePost } from "../reducers/postSlice";
 
 const API_URL = "https://striveschool-api.herokuapp.com/api/posts";
 const BEARER_TOKEN =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2JjNTc1ZGU3MDMzNzAwMTUzMTZkYmEiLCJpYXQiOjE3NDAzOTYzODIsImV4cCI6MTc0MTYwNTk4Mn0.ONZKTuW8uMZfm7TTZUQUDzRq8jfZZmWwJ4vefV07-jY";
 
-export const fetchExperience = (postId) => async (dispatch) => {
+export const fetchPost = (postId) => async (dispatch) => {
   try {
     const response = await fetch(`${API_URL}/${postId}`, {
       headers: {
@@ -56,7 +56,7 @@ export const editPost = (postId, updatePost) => async (dispatch) => {
       throw new Error("Errore nell'aggiornamento del post");
     }
     const data = await response.json();
-    dispatch(addPost(data));
+    dispatch(updatePost(data));
   } catch (error) {
     console.error("Errore durante l'aggiornamento del post:", error);
   }
