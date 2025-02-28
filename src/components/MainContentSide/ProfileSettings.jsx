@@ -8,25 +8,26 @@ const ProfileSettings = () => {
         <Col>
           <Row>
             <Col xs={10}>
-              <h6>Lingua del Profilo</h6>
+              <h5 className="h5">Lingua del Profilo</h5>
               <p className=" text-secondary">Italiano</p>
+              <hr />
             </Col>
             <Col xs={2}>
-              <Pencil />
+              <Pencil style={{ cursor: "pointer" }} />
             </Col>
           </Row>
 
           <Row>
             <Col xs={10}>
-              <h6>Profilo pubblico e Url</h6>
-              <div className="w-50">
+              <h5 className="h5">Profilo pubblico e Url</h5>
+              <div className="w-45">
                 <a href="www.linkedin.com/in/salvatore-desole-b074451b" className="text-secondary">
                   www.linkedin.com/in/salvatore-desole-b074451b
                 </a>
               </div>
             </Col>
             <Col xs={2}>
-              <Pencil />
+              <Pencil style={{ cursor: "pointer" }} />
             </Col>
           </Row>
         </Col>
