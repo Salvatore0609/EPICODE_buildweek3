@@ -12,7 +12,7 @@ const CreatePost = () => {
   // const [addPost, setAddPost] = useState({ text: "" });
   // const post = useSelector((state) => state.post.posts);
   const [postData, setPostData] = useState(null);
-  const dispatch = useDispatch();
+  /* const dispatch = useDispatch(); */
 
   const handleSave = (data) => {
     console.log("Dati salvati:", data);
