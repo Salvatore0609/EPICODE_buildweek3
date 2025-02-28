@@ -31,6 +31,7 @@ const MaybeYouKnow = () => {
         console.error("errore nel caricamento dei profili : ", error);
       }
     };
+
     fetchProfilesList();
   }, [dispatch]);
 
