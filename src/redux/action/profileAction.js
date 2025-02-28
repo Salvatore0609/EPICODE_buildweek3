@@ -39,3 +39,28 @@ export const updateProfile = async (profileData) => {
     throw error;
   }
 };
+/* POST PER L'IMAGE */
+export const updateProfilePicture = async (formData) => {
+  const userId = "me";
+  try {
+    const response = await fetch(`${API_URL}${userId}/picture`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${BEARER_TOKEN}`,
+      },
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error("Errore durante l'aggiornamento dell'immagine");
+    }
+
+    const updatedProfile = await response.json();
+    console.log("Immagine del profilo aggiornata:", updatedProfile);
+    return updatedProfile;
+  } catch (error) {
+    console.error("Errore durante l'aggiornamento dell'immagine del profilo:", error);
+    throw error;
+  }
+};

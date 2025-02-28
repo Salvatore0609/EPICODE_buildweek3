@@ -6,7 +6,7 @@ import { setProfile } from "../../redux/reducers/profileSlice";
 import { fetchProfile, updateProfile } from "../../redux/action/profileAction";
 import EditProfileModal from "./EditProfilModal";
 import ProfileBgModal from "./ProfileBgModal";
-import ProfilePicModal from "../ProfilePicModal";
+import ProfilePicModal from "./ProfilePicModal";
 
 const ProfileSection = () => {
   const dispatch = useDispatch();
@@ -21,23 +21,32 @@ const ProfileSection = () => {
 
   useEffect(() => {
     const getProfile = async () => {
-      const profileData = await fetchProfile("me");
-      dispatch(setProfile(profileData));
+      try {
+        const profileData = await fetchProfile("me");
+        dispatch(setProfile(profileData));
+      } catch (error) {
+        console.error("Errore durante il caricamento del profilo:", error);
+      }
     };
     getProfile();
   }, [dispatch]);
 
   const handleProfileUpdate = async (updatedProfile) => {
-    await updateProfile(updatedProfile);
-    dispatch(setProfile(updatedProfile));
-    handleCloseEditModal();
+    try {
+      await updateProfile(updatedProfile);
+      dispatch(setProfile(updatedProfile));
+      handleCloseEditModal();
+    } catch (error) {
+      console.error("Errore durante l'aggiornamento del profilo:", error);
+    }
   };
 
   if (!profile) return <div>Loading...</div>;
+
   return (
     <>
       <Row>
-        <Col className="border rounded-2 bg-white  mt-4 p-0">
+        <Col className="border rounded-2 bg-white mt-4 p-0">
           <Card>
             <div className="position-relative">
               <div className="position-absolute top-0 end-0">
@@ -55,13 +64,22 @@ const ProfileSection = () => {
 
             <div className="profile-image-container">
               <Button variant="transparent" onClick={() => setShowProfilePicModal(true)}>
-                <img src={profile.image} alt="Profilo" className="profile-image" />
+                <img src={profile.image || "default-image-url"} alt="Profilo" className="profile-image" />
               </Button>
             </div>
-            <ProfilePicModal show={showProfilePicModal} onHide={() => setShowProfilePicModal(false)} />
+
+            <ProfilePicModal
+              show={showProfilePicModal}
+              onHide={() => setShowProfilePicModal(false)}
+              onUploadSuccess={(updatedProfile) => {
+                dispatch(setProfile(updatedProfile));
+              }}
+            />
+
             <Button variant="transparent" onClick={handleShowEditModal} className="d-flex justify-content-end mt-2">
               <Pencil />
             </Button>
+
             <EditProfileModal show={showEditModal} handleClose={handleCloseEditModal} profile={profile} onSave={handleProfileUpdate} />
 
             <Card.Body className="mt-3">
@@ -92,7 +110,7 @@ const ProfileSection = () => {
       </Row>
 
       <Row>
-        <Col className="border rounded-2 bg-white  mt-3">
+        <Col className="border rounded-2 bg-white mt-3">
           <h3>Consigliato per te</h3>
           <div className="d-flex align-items-center">
             <EyeFill /> <p className="m-0">Solo per te</p>
