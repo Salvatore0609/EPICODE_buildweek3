@@ -7,8 +7,8 @@ import { fetchProfile, updateProfile } from "../../redux/action/profileAction";
 import EditProfileModal from "./EditProfilModal";
 import ProfileBgModal from "./ProfileBgModal";
 import ProfilePicModal from "../ProfilePicModal";
-import setEditExp from "./ExperienceSection";
-import setModalShow from "./ExperienceSection";
+import ExperienceModal from "./ExperienceModal";
+import { updateExperience } from "../../redux/reducers/experienceSlice";
 
 const ProfileSection = () => {
   const dispatch = useDispatch();
@@ -17,6 +17,8 @@ const ProfileSection = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showProfileBgModal, setShowProfileBgModal] = useState(false);
   const [showProfilePicModal, setShowProfilePicModal] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
+  const [editExp, setEditExp] = useState(null);
 
   const handleShowEditModal = () => setShowEditModal(true);
   const handleCloseEditModal = () => setShowEditModal(false);
@@ -35,6 +37,12 @@ const ProfileSection = () => {
     handleCloseEditModal();
   };
 
+  const handleEditSave = (data) => {
+    console.log("Dati salvati:", data);
+
+    dispatch(updateExperience(data));
+  };
+
   if (!profile) return <div>Loading...</div>;
   return (
     <>
@@ -44,7 +52,9 @@ const ProfileSection = () => {
             <div className="position-relative">
               <div className="position-absolute top-0 end-0">
                 <Button variant="small" onClick={() => setShowProfileBgModal(true)}>
-                  <PencilFill />
+                  <div className=" d-flex justify-content-center bg-white rounded-circle p-2">
+                    <PencilFill />
+                  </div>
                 </Button>
                 <ProfileBgModal show={showProfileBgModal} onHide={() => setShowProfileBgModal(false)} />
               </div>
@@ -61,7 +71,11 @@ const ProfileSection = () => {
               </Button>
             </div>
             <ProfilePicModal show={showProfilePicModal} onHide={() => setShowProfilePicModal(false)} />
-            <Button variant="transparent" onClick={handleShowEditModal} className="d-flex justify-content-end mt-2">
+            <Button
+              variant="transparent"
+              onClick={handleShowEditModal}
+              className="mt-2 ms-auto d-flex justify-content-end"
+            >
               <Pencil />
             </Button>
             <EditProfileModal
@@ -76,7 +90,9 @@ const ProfileSection = () => {
                 <Card.Title className="me-3">
                   {profile.name} {profile.surname}
                 </Card.Title>
-                <Badge className="bg-transparent text-primary border border-primary">Aggiungi badge di verifica</Badge>
+                <Badge className="bg-transparent text-primary border border-primary" style={{ cursor: "pointer" }}>
+                  Aggiungi badge di verifica
+                </Badge>
                 <div className="d-flex ms-auto align-items-center justify-content-center">
                   <App />
                   <p className="m-0">{profile.title}</p>
@@ -100,6 +116,12 @@ const ProfileSection = () => {
               >
                 Aggiungi esperienze
               </Button>
+              <ExperienceModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+                experience={editExp}
+                onSave={handleEditSave}
+              />
               <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill">
                 Visualizza attività
               </Button>
@@ -113,21 +135,35 @@ const ProfileSection = () => {
 
       <Row>
         <Col className="border rounded-2 bg-white  mt-3">
-          <h3>Consigliato per te</h3>
-          <div className="d-flex align-items-center">
-            <EyeFill /> <p className="m-0">Solo per te</p>
+          <h3 className="mb-0">Consigliato per te</h3>
+          <div className="d-flex align-items-center mb-3">
+            <EyeFill className="me-2" /> <p className="m-0">Solo per te</p>{" "}
           </div>
-          <div className="border border-secondary-subtle border-1 bg-transparent rounded-3 p-3 mb-3">
-            <div className="d-flex">
-              <Image src="https://static.licdn.com/aero-v1/sc/h/db05fgvyq7n2ng4fiexgf4hcq" />
-              <strong>
-                Scrivi un riepilogo per mettere in evidenza la tua personalità o la tua esperienza lavorativa
-              </strong>
+          <div className="d-flex align-items-center ">
+            <div className="d-flex align-items-start "></div>
+            <div className="border border-secondary-subtle border-1 bg-transparent rounded-3 p-3 mb-3">
+              <div className="d-flex ">
+                <Image src="https://static.licdn.com/aero-v1/sc/h/7180r6w1mkjskxrgnbta6aeu1" className="me-2 mb-2" />
+                <strong>In quale settore lavori?</strong>
+              </div>
+              <p>Gli utenti che aggiungono un settore ricevono fino a 2,5 volte più visualizzazioni del profilo.</p>
+              <Button className="bg-transparent text-secondary border border-secondary-subtle rounded-pill">
+                Aggiungi settore
+              </Button>
             </div>
-            <p>Gli utenti che includono un riepilogo ricevono fino a 3,9 volte più visualizzazioni del profilo.</p>
-            <Button className="bg-transparent text-secondary border border-secondary-subtle rounded-pill">
-              Aggiungi un riepilogo
-            </Button>
+            <div className="d-flex align-items-center me-2"></div>
+            <div className="border border-secondary-subtle border-1 bg-transparent rounded-3 p-3 mb-3">
+              <div className="d-flex">
+                <Image src="https://static.licdn.com/aero-v1/sc/h/db05fgvyq7n2ng4fiexgf4hcq" className="me-2 mb-2" />
+                <strong>
+                  Scrivi un riepilogo per mettere in evidenza la tua personalità o la tua esperienza lavorativa
+                </strong>
+              </div>
+              <p>Gli utenti che includono un riepilogo ricevono fino a 3,9 volte più visualizzazioni del profilo.</p>
+              <Button className="bg-transparent text-secondary border border-secondary-subtle rounded-pill">
+                Aggiungi un riepilogo
+              </Button>
+            </div>
           </div>
         </Col>
       </Row>

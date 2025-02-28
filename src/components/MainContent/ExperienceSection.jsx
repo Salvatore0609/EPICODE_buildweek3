@@ -1,5 +1,5 @@
 import { Button, Col, Image, Row } from "react-bootstrap";
-import { Pencil, PlusLg, SuitcaseLgFill, XLg } from "react-bootstrap-icons";
+import { PlusLg, SuitcaseLgFill, XLg } from "react-bootstrap-icons";
 
 import { useEffect, useState } from "react";
 import ExperienceModal from "./ExperienceModal";
@@ -10,6 +10,7 @@ import { addExperience, updateExperience } from "../../redux/reducers/experience
 const ExperienceSection = ({ userId }) => {
   const [modalShow, setModalShow] = useState(false);
   const [editExp, setEditExp] = useState(null);
+  const [isVisible, setIsVisible] = useState(true);
   const dispatch = useDispatch();
   const experiences = useSelector((state) => state.experience.experiences);
   const [loading, setLoading] = useState(false);
@@ -34,6 +35,10 @@ const ExperienceSection = ({ userId }) => {
 
   if (loading) {
     return <div>Loading...</div>;
+  }
+
+  if (!isVisible) {
+    return null;
   }
 
   return (
@@ -76,9 +81,7 @@ const ExperienceSection = ({ userId }) => {
                     setEditExp(exp);
                     setModalShow(true);
                   }}
-                >
-                  <Pencil />
-                </Button>
+                ></Button>
                 <ExperienceModal
                   show={modalShow}
                   onHide={() => setModalShow(false)}
@@ -93,12 +96,12 @@ const ExperienceSection = ({ userId }) => {
             <Col className="border bg-white rounded-2  mt-3 p-2 ">
               <div className="border border-1 border-secondary-subtle  p-3 rounded-3 " style={{ outline: "dashed" }}>
                 <div className="d-flex">
-                  <XLg />
+                  <p className="me-auto">
+                    Metti in risalto i risultati raggiunti e ottieni fino a 2 volte più visualizzazioni del profilo e
+                    collegamenti
+                  </p>
+                  <XLg className="ms-2" onClick={() => setIsVisible(false)} style={{ cursor: "pointer" }} />
                 </div>
-                <p>
-                  Metti in risalto i risultati raggiunti e ottieni fino a 2 volte più visualizzazioni del profilo e
-                  collegamenti
-                </p>
                 <div className="d-flex">
                   <SuitcaseLgFill className="text-secondary pt-1 fs-4" />
 

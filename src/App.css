@@ -147,6 +147,7 @@ a {
 }
 
 .global-footer__label {
+  color: #00000084;
   margin: 0;
 }
 
@@ -179,4 +180,32 @@ input[type="file"] {
 }
 .bord {
   border-top: 1px solid #cdc6c6;
+}
+
+.custom-button-hover:hover {
+  background-color: #f8f9fa;
+}
+
+.custom-tabs .nav-link.active {
+  border-bottom: 3px solid green;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+
+.custom-tabs-hover .nav-link:hover {
+  background-color: transparent !important;
+}
+
+.custom-tabs .nav-link:hover {
+  border-radius: 0% !important;
+  background-color: rgba(235, 235, 235, 0.808) !important;
+}
+
+.custom-tabs .nav-link {
+  color: black !important;
+}
+
+.large-icon {
+  font-size: 2rem;
 }

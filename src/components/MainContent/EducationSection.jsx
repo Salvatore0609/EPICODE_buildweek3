@@ -7,11 +7,11 @@ const EducationSection = () => {
       <Row className="border rounded-2 bg-white  mt-3">
         <Row>
           <Col>
-            <p>Formazione</p>
+            <h4>Formazione</h4>
           </Col>
           <Col className="d-flex justify-content-end">
-            <PlusLg />
-            <Pencil />
+            <PlusLg className="mt-2 me-2" style={{ cursor: "pointer" }} />
+            <Pencil className="mt-2" style={{ cursor: "pointer" }} />
           </Col>
         </Row>
         <Row>
