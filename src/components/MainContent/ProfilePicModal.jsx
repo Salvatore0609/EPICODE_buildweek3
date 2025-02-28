@@ -65,16 +65,23 @@ const ProfilePicModal = ({ onUploadSuccess, profile, ...props }) => {
         </Modal.Title>
       </Modal.Header>
 
-      <Modal.Body className="bg-dark">
-        <div>
-          <img src={profile.image || "default-image-url"} alt="Profilo" className="profile-image mb-3" />
-        </div>
+      <Modal.Body className="bg-dark d-flex flex-column align-items-center">
+        <img
+          src={profile.image || "default-image-url"}
+          alt="Profilo"
+          className=" rounded-circle mb-3  "
+          width={200}
+          height={200}
+          style={{ cursor: "pointer" }}
+        />
+
         {imagePreview && (
-          <div className="d-flex justify-content-center">
-            <img src={imagePreview} alt="Anteprima immagine" style={{ maxWidth: "100%", maxHeight: "300px" }} />
+          <div className="d-flex justify-content-center align-items-center" style={{ height: "300px" }}>
+            <img src={imagePreview} alt="Anteprima immagine" style={{ maxWidth: "100%", maxHeight: "100%" }} />
           </div>
         )}
       </Modal.Body>
+
       <Modal.Footer className="bg-dark d-flex justify-content-between">
         <Form onSubmit={handleUpload} enctype="multipart/form-data">
           <Form.Group className="d-flex align-items-center">
@@ -104,8 +111,10 @@ const ProfilePicModal = ({ onUploadSuccess, profile, ...props }) => {
         </Form>
 
         <div className="d-flex flex-column align-items-center px-5">
-          <Trash3Fill className="text-light fs-4" />
-          <p className="text-light">Elimina</p>
+          <Trash3Fill className="text-light fs-4" style={{ cursor: "pointer" }} />
+          <p className="text-light" style={{ cursor: "pointer" }}>
+            Elimina
+          </p>
         </div>
       </Modal.Footer>
     </Modal>
