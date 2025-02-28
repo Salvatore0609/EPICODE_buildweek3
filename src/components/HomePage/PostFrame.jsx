@@ -7,7 +7,7 @@ import { formatDistanceToNow } from "date-fns";
 import { it } from "date-fns/locale";
 import { setProfilesList } from "../../redux/reducers/profilesLists";
 
-const PostFrame = () => {
+const PostFrame = ({ postData }) => {
   const API_URL = "https://striveschool-api.herokuapp.com/api/posts/";
   const API_URL_PROFILES = "https://striveschool-api.herokuapp.com/api/profile/";
   const BEARER_TOKEN =
@@ -80,10 +80,16 @@ const PostFrame = () => {
 
   return (
     <>
+      {/* {postData && (
+        <div>
+          <h4>Nuovo Post</h4>
+          <p>{postData.text}</p>
+        </div>
+      )} */}
       {posts && posts.length > 0 ? (
         [...posts]
           .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-          .slice(0, 50)
+          .slice(0, 20)
           .map((post) => (
             <div key={post._id} className="py-3  bg-white border border-secondary-subtle mb-2 p-2 rounded-3">
               <div className="d-flex align-items-center">

@@ -1,19 +1,60 @@
 import { Button, Form, Image } from "react-bootstrap";
 import { BlockquoteLeft, CardImage, Youtube } from "react-bootstrap-icons";
 import CreatePostModal from "./CreatePostModal";
-import { useState, useSelector } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { addPost } from "../../redux/reducers/postSlice";
+import { useDispatch } from "react-redux";
+import PostFrame from "./PostFrame";
 
 const CreatePost = () => {
   const [modalShow, setModalShow] = useState(false);
-  const [editPost, setEditPost] = useState(null)
-  const post = useSelector((state)=>state.post.posts)
+  // const [editPost, setEditPost] = useState(null);
+  // const [addPost, setAddPost] = useState({ text: "" });
+  // const post = useSelector((state) => state.post.posts);
+  const [postData, setPostData] = useState(null);
+  const dispatch = useDispatch();
 
-
-  const handleEditSave = (data) => {
+  const handleSave = (data) => {
     console.log("Dati salvati:", data);
-
-    dispatch(updatePost(data));
+    setPostData(data);
   };
+
+  const createPost = useCallback(async () => {
+    const API_URL = "https://striveschool-api.herokuapp.com/api/posts";
+    const BEARER_TOKEN =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2JjNTc1ZGU3MDMzNzAwMTUzMTZkYmEiLCJpYXQiOjE3NDAzOTYzODIsImV4cCI6MTc0MTYwNTk4Mn0.ONZKTuW8uMZfm7TTZUQUDzRq8jfZZmWwJ4vefV07-jY";
+    try {
+      const response = await fetch(`${API_URL}/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${BEARER_TOKEN}`,
+        },
+        body: JSON.stringify(postData),
+      });
+      if (!response.ok) {
+        throw new Error("Errore nel salvataggio del post");
+      }
+
+      return { success: true };
+      // const data = await response.json();
+      // dispatch(addPost(data));
+    } catch (error) {
+      console.error("Errore durante la creazione del post:", error);
+    }
+  }, [postData]);
+
+  useEffect(() => {
+    createPost();
+    // console.log(postData);
+    // dispatch(addPost(postData));
+  }, [createPost]);
+
+  // const handleEditSave = (data) => {
+  //   console.log("Dati salvati:", data);
+
+  //   dispatch(updatePost(data));
+  // };
 
   return (
     <>
@@ -38,7 +79,7 @@ const CreatePost = () => {
             Crea un post
           </Button>
 
-          <CreatePostModal show={modalShow} onHide={() => setModalShow(false)} post={editPost} onSave={} />
+          <CreatePostModal show={modalShow} onHide={() => setModalShow(false)} post={postData} onSave={handleSave} />
         </div>
         <div className="d-flex justify-content-around align-items-center text-dark ">
           <Form>
@@ -76,6 +117,7 @@ const CreatePost = () => {
           </Form>
         </div>
       </div>
+      <PostFrame postData={postData} />
     </>
   );
 };

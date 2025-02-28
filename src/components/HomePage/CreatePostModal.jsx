@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button, Form, Image, Modal } from "react-bootstrap";
 import { Images } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProfile } from "../../redux/action/profileAction";
 import { setProfile } from "../../redux/reducers/profileSlice";
+
 const CreatePostModal = (props) => {
   const { show, onHide, onSave, post } = props;
 
@@ -25,6 +26,34 @@ const CreatePostModal = (props) => {
     };
     getProfile();
   }, [dispatch]);
+
+  useEffect(() => {
+    if (post) {
+      setPostData({
+        text: post.text,
+      });
+    }
+  }, [post]);
+
+  const handleSave = () => {
+    // e.preventDefault();
+    console.log({ postData });
+    // if (!postData.text) {
+    //   alert("Tutti i campi obbligatori devono essere compilati.");
+    //   return;
+    // }
+    onSave(postData);
+    onHide();
+  };
+
+  const handleChange = (e) => {
+    // const { name, value } = e.target.value;
+    // console.log(name);
+    setPostData({
+      ...postData,
+      text: e.target.value,
+    });
+  };
 
   return (
     <Modal show={show} onHide={onHide} size="lg">
@@ -51,6 +80,7 @@ const CreatePostModal = (props) => {
         <Form>
           <Form.Group className="p-2 mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Control
+              onChange={handleChange}
               as="textarea"
               rows={25}
               className="border border-0"
@@ -71,7 +101,7 @@ const CreatePostModal = (props) => {
             />{" "}
           </div>
           <div className="d-flex align-items-end">
-            <Button variant="primary rounded-pill" type="submit" className="ms-auto">
+            <Button variant="primary rounded-pill" type="submit" className="ms-auto" onClick={handleSave}>
               Pubblica
             </Button>
           </div>

@@ -15,7 +15,6 @@ import {
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CreatePost from "./HomePage/CreatePost";
-import PostFrame from "./HomePage/PostFrame";
 
 const Homepage = () => {
   const profile = useSelector((state) => state.profile);
@@ -147,10 +146,6 @@ const Homepage = () => {
           {/* CREATE POST WINDOW */}
 
           <CreatePost />
-
-          {/* POST FRAMES */}
-
-          <PostFrame />
         </Col>
 
         <Col md={4}>
