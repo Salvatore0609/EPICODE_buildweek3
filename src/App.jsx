@@ -5,6 +5,7 @@ import MainContent from "./components/MainContent";
 import MessageBar from "./components/MessageBar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Homepage from "./components/Homepage";
+import JobOffersPage from "./components/JobOffersPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/main-content" element={<MainContent />} />
           <Route path="/" element={<Homepage />} />
+          <Route path="/job-offers" element={<JobOffersPage />} />
         </Routes>
 
         <MessageBar />
