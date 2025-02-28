@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { updateProfilePicture } from "../../redux/action/profileAction";
 import { setProfile } from "../../redux/reducers/profileSlice";
 
-const ProfilePicModal = ({ onUploadSuccess, ...props }) => {
+const ProfilePicModal = ({ onUploadSuccess, profile, ...props }) => {
   const [file, setFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const dispatch = useDispatch();
@@ -66,6 +66,9 @@ const ProfilePicModal = ({ onUploadSuccess, ...props }) => {
       </Modal.Header>
 
       <Modal.Body className="bg-dark">
+        <div>
+          <img src={profile.image || "default-image-url"} alt="Profilo" className="profile-image mb-3" />
+        </div>
         {imagePreview && (
           <div className="d-flex justify-content-center">
             <img src={imagePreview} alt="Anteprima immagine" style={{ maxWidth: "100%", maxHeight: "300px" }} />

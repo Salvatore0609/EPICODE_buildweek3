@@ -4,7 +4,7 @@ import {
   Bullseye,
   CardChecklist,
   CompassFill,
-  Grid3x3Gap,
+  // Grid3x3Gap,
   PeopleFill,
   PersonCheckFill,
   PlayBtnFill,
@@ -16,9 +16,9 @@ import { Link } from "react-router-dom";
 const TopBar = () => {
   return (
     <>
-      <Navbar className="bg-white MyNav  " sticky="top">
-        <Container className=" p-0">
-          <Navbar.Brand href="#" className="nav-brand">
+      <Navbar className="bg-white MyNav " sticky="top">
+        <Container className=" p-0  d-flex justify-content-around">
+          <Navbar.Brand href="#" className="nav-brand me-0">
             <img
               src="https://brandlogos.net/wp-content/uploads/2016/06/linkedin-logo.png"
               alt="logo"
@@ -32,8 +32,8 @@ const TopBar = () => {
           </Form>
 
           <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
-            <Nav className="me-auto my-2 my-lg-0">
+          <Navbar.Collapse id="navbarScroll" className="w-100">
+            <Nav className=" d-flex justify-content-around w-100">
               <Link
                 to="/"
                 className="d-flex flex-column justify-content-center nav-link
@@ -132,7 +132,7 @@ const TopBar = () => {
                   className="rounded-circle"
                   src="https://plus.unsplash.com/premium_photo-1661333468805-e44347dbbf58?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNvbXB1dGVyJTIwYW5nZXJ8ZW58MHx8MHx8fDA%3D"
                 />
-                <NavDropdown title="Tu" id="navbarScrollingDropdown" className="p-0">
+                <NavDropdown title="Tu" id="navbarScrollingDropdown" className="p-0" align="end">
                   <Row className="you-section">
                     <Col>
                       <NavDropdown.Item>
@@ -189,7 +189,7 @@ const TopBar = () => {
 
                       <p>
                         <a href="#" className="underline">
-                          Post e attività
+                          Post e attivitÃ
                         </a>
                       </p>
                       <p>
@@ -207,7 +207,19 @@ const TopBar = () => {
                 </NavDropdown>
               </Nav.Link>
               <Nav.Link href="#" className="d-flex flex-column justify-content-center align-items-center  ">
-                <Grid3x3Gap className="fs-5 " />
+                {/* <Grid3x3Gap className="fs-5 " /> */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  data-supported-dps="24x24"
+                  fill="currentColor"
+                  className="mercado-match fs-5 "
+                  width="24"
+                  height="24"
+                  focusable="false"
+                >
+                  <path d="M3 3h4v4H3zm7 4h4V3h-4zm7-4v4h4V3zM3 14h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4zM3 21h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4z"></path>
+                </svg>
                 <NavDropdown title="Per le aziende" id="navbarScrollingDropdown" align="end">
                   <Row className="gap-4 d-flex large-nav ">
                     <Col md={5} className="ms-4 ">
@@ -276,7 +288,7 @@ const TopBar = () => {
                       </NavDropdown.Item>
                       <NavDropdown.Item className="menu-items">
                         <p className="fw-medium menu-item">Vendi su LinkedIn</p>
-                        <p className="menu-subtext">Sblocca nuove oppurtunità di vendita</p>
+                        <p className="menu-subtext">Sblocca nuove oppurtunitÃ di vendita</p>
                       </NavDropdown.Item>
                       <NavDropdown.Item className="menu-items">
                         <p className="fw-medium menu-item">Offerta di lavoro gratuita</p>
@@ -284,7 +296,7 @@ const TopBar = () => {
                       </NavDropdown.Item>
 
                       <NavDropdown.Item className="menu-items">
-                        <p className="fw-medium menu-item">Fai pubblicità su LinkedIn</p>
+                        <p className="fw-medium menu-item">Fai pubblicitÃ su LinkedIn</p>
                         <p className="menu-subtext">Acquisisci clienti e fai crescere la tua azienda</p>
                       </NavDropdown.Item>
                       <NavDropdown.Item className="menu-items">
@@ -310,7 +322,7 @@ const TopBar = () => {
                 style={{ width: "200px" }}
               >
                 <a href="#" className="premium-a text-center ">
-                  Prova premium per 0 <br /> EUR
+                  Prova premium per 0 EUR
                 </a>
               </Nav.Link>
             </Nav>

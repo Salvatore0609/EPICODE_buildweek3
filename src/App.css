@@ -40,7 +40,9 @@ body {
 /* TOPBAR */
 
 .MyNav {
-  height: 70px;
+  height: 60px;
+  font-size: 0.95rem;
+  padding: 0;
 }
 a {
   text-decoration: none;
@@ -48,8 +50,8 @@ a {
 }
 .premium-a {
   text-decoration: underline;
-  color: #b06009;
-  font-size: 1em;
+  color: #845306;
+  font-size: 0.8rem;
 }
 .underline:hover {
   text-decoration: underline;
@@ -67,7 +69,7 @@ a {
 .Cerca {
   background-color: #edf3f8;
   border: none;
-  width: 200px;
+  width: 80%;
 }
 .search-icon {
   position: absolute;
@@ -77,7 +79,7 @@ a {
 .input-zone {
   width: 100%;
   z-index: 0;
-  max-width: 280px;
+
   position: relative;
 }
 

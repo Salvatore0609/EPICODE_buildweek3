@@ -82,6 +82,7 @@ const ProfileSection = () => {
               onUploadSuccess={(updatedProfile) => {
                 dispatch(setProfile(updatedProfile));
               }}
+              profile={profile}
             />
 
             <Button variant="transparent" onClick={handleShowEditModal} className="d-flex justify-content-end mt-2">
