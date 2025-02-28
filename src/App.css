@@ -182,7 +182,6 @@ input[type="file"] {
   border-top: 1px solid #cdc6c6;
 }
 
-<<<<<<< HEAD
 .custom-button-hover:hover {
   background-color: #f8f9fa;
 }
@@ -209,8 +208,8 @@ input[type="file"] {
 
 .large-icon {
   font-size: 2rem;
-=======
-/*MAIN CONTENT SIDES*/
+  /*MAIN CONTENT SIDES*/
+}
 .profile-pic {
   padding-right: 0;
   margin-left: 1rem;
@@ -234,5 +233,4 @@ input[type="file"] {
 .PlusLg:hover {
   border-color: black !important;
   color: black !important;
->>>>>>> fa96951fde42fe1b8b0693b3caa499fa75ae81ea
 }

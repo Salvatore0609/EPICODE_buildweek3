@@ -11,14 +11,8 @@ const Footer = () => {
   };
 
   return (
-    <Container
-      style={{
-        fontFamily: "var(--artdeco-reset-typography-font-family-sans)",
-        marginTop: "1.6rem",
-        backgroundColor: "transparent",
-      }}
-    >
-      <Row>
+    <Container>
+      <Row className="mt-5">
         <Col>
           <p>
             <a
