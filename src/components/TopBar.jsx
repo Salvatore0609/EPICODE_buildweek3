@@ -72,7 +72,8 @@ const TopBar = () => {
                   Rete
                 </a>
               </Nav.Link>
-              <Nav.Link href="#" className="d-flex flex-column justify-content-center align-items-center">
+
+              <Link to="/job-offers" className="nav-link d-flex flex-column justify-content-center align-items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -88,7 +89,8 @@ const TopBar = () => {
                 <a href="#" className=" nav-paragraphs">
                   Lavoro
                 </a>
-              </Nav.Link>
+              </Link>
+
               <Nav.Link href="#" className="d-flex flex-column justify-content-center align-items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -125,14 +127,21 @@ const TopBar = () => {
               </Nav.Link>
 
               <Nav.Link className="d-flex flex-column justify-content-center align-items-center p-0">
-                <img
-                  alt="profile pic"
-                  width="24"
-                  height="24"
-                  className="rounded-circle"
-                  src="https://plus.unsplash.com/premium_photo-1661333468805-e44347dbbf58?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNvbXB1dGVyJTIwYW5nZXJ8ZW58MHx8MHx8fDA%3D"
-                />
-                <NavDropdown title="Tu" id="navbarScrollingDropdown" className="p-0" align="end">
+                <div>
+                  <img
+                    alt="profile pic"
+                    width="24"
+                    height="24"
+                    className="rounded-circle mt-2"
+                    src="https://plus.unsplash.com/premium_photo-1661333468805-e44347dbbf58?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNvbXB1dGVyJTIwYW5nZXJ8ZW58MHx8MHx8fDA%3D"
+                  />
+                </div>
+                <NavDropdown
+                  title={<span style={{ fontSize: "0.85rem" }}>Tu</span>}
+                  id="navbarScrollingDropdown"
+                  className="p-0 mt-0"
+                  align="end"
+                >
                   <Row className="you-section">
                     <Col>
                       <NavDropdown.Item>
@@ -220,7 +229,11 @@ const TopBar = () => {
                 >
                   <path d="M3 3h4v4H3zm7 4h4V3h-4zm7-4v4h4V3zM3 14h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4zM3 21h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4z"></path>
                 </svg>
-                <NavDropdown title="Per le aziende" id="navbarScrollingDropdown" align="end">
+                <NavDropdown
+                  title={<span style={{ fontSize: "0.85rem" }}>Per le aziende</span>}
+                  id="navbarScrollingDropdown"
+                  align="end"
+                >
                   <Row className="gap-4 d-flex large-nav ">
                     <Col md={5} className="ms-4 ">
                       <NavDropdown.Item
