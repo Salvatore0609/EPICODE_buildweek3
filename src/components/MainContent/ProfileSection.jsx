@@ -7,6 +7,8 @@ import { fetchProfile, updateProfile } from "../../redux/action/profileAction";
 import EditProfileModal from "./EditProfilModal";
 import ProfileBgModal from "./ProfileBgModal";
 import ProfilePicModal from "./ProfilePicModal";
+import setEditExp from "./ExperienceSection";
+import setModalShow from "./ExperienceSection";
 
 const ProfileSection = () => {
   const dispatch = useDispatch();
@@ -98,10 +100,19 @@ const ProfileSection = () => {
                 <p>{profile.area}</p>
                 <p>Collegamenti (amicizie)</p>
               </Card.Text>
-              <Button className="me-3 rounded-pill" variant="primary">
+              <Button className="me-3 rounded-pill" variant="primary" onClick={handleShowEditModal}>
                 Modifica profilo
               </Button>
-              <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill">Aggiungi esperienze</Button>
+
+              <Button
+                className="me-3 bg-transparent text-primary border border-primary rounded-pill"
+                onClick={() => {
+                  setEditExp(null);
+                  setModalShow(true);
+                }}
+              >
+                Aggiungi esperienze
+              </Button>
               <Button className="me-3 bg-transparent text-primary border border-primary rounded-pill">Visualizza attività</Button>
               <Button className="me-3 bg-transparent text-secondary border border-secondary-subtle rounded-pill">Altro</Button>
             </Card.Body>

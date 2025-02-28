@@ -38,27 +38,28 @@ const MaybeYouKnow = () => {
     <>
       <Row className="border rounded-2 bg-white  mt-3">
         <Col>
-          <p className="mb-0">Altre visualizzazioni</p>
+          <p className="mb-0 fw-semibold ">Altre visualizzazioni</p>
           <div className="d-flex align-items-center m-0">
-            <EyeFill /> <p className="m-0">Solo per te</p>
+            <EyeFill className="mx-2 text-secondary" /> <p className="m-0 text-secondary">Solo per te</p>
           </div>
         </Col>
         {profiles.length > 0 ? (
           profiles.slice(0, 4).map((profile) => (
-            <div key={profile._id} className="mt-3">
-              <Row>
-                <Col xs={3}>
-                  <Image style={{ width: "30px", height: "30px" }} src={profile.image} />
-                </Col>
-                <Col xs={9}>
-                  <p>{profile.name}</p>
-                  <p>{profile.title}</p>
-                  <Button className="me-3 bg-transparent text-secondary border border-secondary-subtle  rounded-pill">
-                    <PersonPlusFill />
-                    Collegati
-                  </Button>
-                </Col>
-              </Row>
+            <div key={profile._id} className="mt-3 d-flex">
+              <Image
+                style={{ width: "40px", height: "40px", borderRadius: "50%", cursor: "pointer" }}
+                src={profile.image}
+                className="ms-2 "
+              />
+
+              <div className="d-flex flex-column ms-2">
+                <p className="fw-bold p-0 m-0 profile-name">{profile.name}</p>
+                <p className="mb-2">{profile.title}</p>
+                <Button className="me-3 bg-transparent text-secondary border border-secondary-subtle  rounded-pill connect-button fw-semibold">
+                  <PersonPlusFill />
+                  Collegati
+                </Button>
+              </div>
             </div>
           ))
         ) : (
@@ -71,32 +72,34 @@ const MaybeYouKnow = () => {
 
       <Row className="border rounded-2 bg-white   mt-3">
         <Col>
-          <p>persone che potresti conoscere</p>
-          <p className="m-0 text-secondary">Dalla tua azienza</p>
+          <p className="fw-semibold p-0 mb-0">Persone che potresti conoscere</p>
+          <p className="m-0 text-secondary">Dalla tua azienda</p>
         </Col>
         {profiles.length > 5 ? (
           profiles.slice(5, 9).map((profile) => (
-            <div key={profile._id} className="mt-3">
-              <Row>
-                <Col xs={3}>
-                  <Image style={{ width: "30px", height: "30px" }} src={profile.image} />
-                </Col>
-                <Col xs={9}>
-                  <p>{profile.name}</p>
-                  <p>{profile.title}</p>
-                  <Button className="me-3 bg-transparent text-secondary border border-secondary-subtle  rounded-pill">
-                    <PersonPlusFill />
-                    Collegati
-                  </Button>
-                </Col>
-              </Row>
+            <div key={profile._id} className="mt-3 d-flex ">
+              <Image
+                style={{ width: "40px", height: "40px", borderRadius: "50%", cursor: "pointer" }}
+                src={profile.image}
+                className="ms-2 "
+              />
+
+              <div className="d-flex flex-column ms-2">
+                <p className="fw-bold p-0 m-0 profile-name">{profile.name}</p>
+                <p className="mb-2">{profile.title}</p>
+
+                <Button className="me-3 bg-transparent text-secondary border border-secondary-subtle  rounded-pill fw-semibold  px-4 connect-button">
+                  <PersonPlusFill />
+                  Collegati
+                </Button>
+              </div>
             </div>
           ))
         ) : (
           <p>nessun profilo disponibile</p>
         )}
 
-        <Row className="text-center text-secondary m-3">
+        <Row className="text-center  m-3 mostra-tutto">
           <a href="#">Mostra tutto</a>
         </Row>
       </Row>
