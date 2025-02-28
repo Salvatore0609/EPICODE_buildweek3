@@ -3,10 +3,12 @@ import { ArrowRight, BookmarkFill, ListUl, PencilSquare, SlashSquareFill } from 
 import { useDispatch, useSelector } from "react-redux";
 import SmallFooter from "./SmallFooter";
 import { useEffect, useState } from "react";
-import { fetchJobs } from "../redux/action/jobsAction";
+import { fetchJobs, selectJobAction } from "../redux/action/jobsAction";
+import { Link } from "react-router-dom";
 
 const JobOffersPage = () => {
   const dispatch = useDispatch();
+  // const navigate = useNavigate();
   const profile = useSelector((state) => state.profile);
   const workOffers = useSelector((state) => state.jobs.jobs);
 
@@ -91,20 +93,18 @@ const JobOffersPage = () => {
               </p>
               <ListGroup variant="flush" className={`px-4 d-block`}>
                 {workOffers.slice(0, 2).map((job) => (
-                  <ListGroup.Item
-                    key={job._id}
-                    className="px-0 d-flex justify-content-between"
-                    style={{ cursor: "pointer" }}
-                  >
-                    <div className="d-flex">
-                      <div className="ms-2">
-                        <h6 className="mb-0 text-primary">{job.title}</h6>
-                        <p className="mb-0">
-                          {job.company_name} &#8226; {job.candidate_required_location} ({job.job_type})
-                        </p>
-                        <p className="mb-0 text-secondary">{job.publication_date}</p>
+                  <ListGroup.Item key={job._id} className="px-0 d-flex justify-content-between">
+                    <Link to={"/job-details/" + job._id} onClick={() => dispatch(selectJobAction(job))}>
+                      <div className="d-flex">
+                        <div className="ms-2">
+                          <h6 className="mb-0 text-primary">{job.title}</h6>
+                          <p className="mb-0">
+                            {job.company_name} &#8226; {job.candidate_required_location} ({job.job_type})
+                          </p>
+                          <p className="mb-0 text-secondary">{job.publication_date}</p>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                     <CloseButton />
                   </ListGroup.Item>
                 ))}
@@ -133,15 +133,17 @@ const JobOffersPage = () => {
               <ListGroup variant="flush" className={`px-4 d-block`}>
                 {workOffers.map((job) => (
                   <ListGroup.Item key={job._id} className="px-0 d-flex justify-content-between">
-                    <div className="d-flex">
-                      <div className="ms-2">
-                        <h6 className="mb-0 text-primary">{job.title}</h6>
-                        <p className="mb-0">
-                          {job.company_name} &#8226; {job.candidate_required_location} ({job.job_type})
-                        </p>
-                        <p className="mb-0 text-secondary">{job.publication_date}</p>
+                    <Link to={"/job-details/" + job._id}>
+                      <div className="d-flex">
+                        <div className="ms-2">
+                          <h6 className="mb-0 text-primary">{job.title}</h6>
+                          <p className="mb-0">
+                            {job.company_name} &#8226; {job.candidate_required_location} ({job.job_type})
+                          </p>
+                          <p className="mb-0 text-secondary">{job.publication_date}</p>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                     <CloseButton />
                   </ListGroup.Item>
                 ))}

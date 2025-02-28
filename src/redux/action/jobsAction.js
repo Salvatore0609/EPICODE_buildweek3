@@ -23,6 +23,9 @@
 // };
 
 export const SET_JOBS = "SET_JOBS";
+export const SELECT_JOB = "SELECT_JOB";
+
+export const selectJobAction = (job) => ({ type: SELECT_JOB, payload: job });
 
 const API_URL = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
 const BEARER_TOKEN =

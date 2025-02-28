@@ -1,7 +1,8 @@
-import { SET_JOBS } from "../action/jobsAction";
+import { SELECT_JOB, SET_JOBS } from "../action/jobsAction";
 
 const initialState = {
   jobs: [],
+  job: null,
 };
 
 const jobsReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const jobsReducer = (state = initialState, action) => {
       return {
         ...state,
         jobs: action.payload,
+      };
+    case SELECT_JOB:
+      return {
+        ...state,
+        job: action.payload,
       };
     default:
       return state;
